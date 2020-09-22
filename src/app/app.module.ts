@@ -43,7 +43,8 @@ import { ChartsModule } from 'ng2-charts';
 
 // api service
 import { HttpClientModule } from '@angular/common/http';
-import { StudiestypeService } from './service/studiestype.service'
+import { StudiestypeService } from './service/studiestype.service';
+import { MachinesService } from './service/machines.service';
 
 
 @NgModule({
@@ -72,6 +73,7 @@ import { StudiestypeService } from './service/studiestype.service'
   ],
   providers: [
     StudiestypeService,
+    MachinesService,
     {
     provide: LocationStrategy,
     useClass: HashLocationStrategy
