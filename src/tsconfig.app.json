@@ -8,8 +8,11 @@
     "types": [],
     "paths": {
       "@angular/*": [
-        "../node_modules/@angular/*"
-      ]
+        "../node_modules/@angular/*"],
+      "@service/*":["./app/service/*"],
+      "@views/*":["./app/views/*"],
+      "@env/*": ["./app/environments/*"],
+      "@shared/*": ["./app/shared/*"]
     }
   },
   "angularCompilerOptions": {
