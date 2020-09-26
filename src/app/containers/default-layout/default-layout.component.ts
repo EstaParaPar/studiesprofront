@@ -1,5 +1,8 @@
 import {Component} from '@angular/core';
 import { navItems } from '../../_nav';
+//import { navItems1 } from '../../_nav';
+//import { navItems2 } from '../../_nav';
+
 
 @Component({
   selector: 'app-dashboard',

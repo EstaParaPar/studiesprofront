@@ -21,9 +21,16 @@ export const routes: Routes = [
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
   {
-    path: '',
+    path: 'dash_admin',
     redirectTo: 'dashboard',
     pathMatch: 'full',
+  },
+  {
+    path: '',
+    component: LoginComponent,
+    data: {
+      title: 'Login Page'
+    }
   },
   {
     path: '404',
@@ -40,13 +47,7 @@ export const routes: Routes = [
       title: 'Page 500'
     }
   },
-  {
-    path: 'login',
-    component: LoginComponent,
-    data: {
-      title: 'Login Page'
-    }
-  },
+
   {
     path: 'register',
     component: RegisterComponent,

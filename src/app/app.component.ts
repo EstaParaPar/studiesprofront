@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router } from '@angular/router';
 import { TokenStorageService } from './service/token-storage.service';
 
 @Component({
@@ -9,12 +9,12 @@ import { TokenStorageService } from './service/token-storage.service';
 })
 export class AppComponent implements OnInit {
 
-  private roles: string[];
+  private roles: string;
   isLoggedIn = false;
   showAdminBoard = false;
   showModeratorBoard = false;
   username: string;
-  
+
   constructor(private router: Router, private tokenStorageService: TokenStorageService) { }
 
   ngOnInit() {
@@ -23,19 +23,21 @@ export class AppComponent implements OnInit {
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
-
-      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
-
       this.username = user.username;
-    };
 
-    this.router.events.subscribe((evt) => {
-      if (!(evt instanceof NavigationEnd)) {
-        return;
+      if (this.roles = 'Admin' ) {
+        this.showAdminBoard =  true;
+        // redirigir a showAdmin
+        this.router.navigate(['dash_admin']);
+
       }
-      window.scrollTo(0, 0);
-    });
+      if (this.roles = 'Doctor' ) {
+        this.showModeratorBoard =  true;
+      }
+
+
+
+    }
   }
 
     logout(): void {
