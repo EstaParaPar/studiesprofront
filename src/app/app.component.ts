@@ -22,21 +22,22 @@ export class AppComponent implements OnInit {
 
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
-      this.roles = user.roles;
+      this.roles = user.role;
       this.username = user.username;
 
-      if (this.roles = 'Admin' ) {
+      if (this.roles === 'Admin' ) {
         this.showAdminBoard =  true;
         // redirigir a showAdmin
         this.router.navigate(['dash_admin']);
 
       }
-      if (this.roles = 'Doctor' ) {
-        this.showModeratorBoard =  true;
+      if (this.roles === 'Doctor' ) {
+        this.router.navigate(['dash_doctor']);
       }
 
-
-
+      if (this.roles === 'Tecnico' ) {
+        this.router.navigate(['dash_tecnico']);
+      }
     }
   }
 

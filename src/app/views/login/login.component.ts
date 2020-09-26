@@ -11,9 +11,9 @@ export class LoginComponent implements OnInit {
   form: any = {};
   isLoggedIn = false;
   isLoginFailed = false;
+  isForgotPass = false;
   errorMessage = '';
-  roles: '';//string[] = [];
-
+  roles: '';
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
@@ -46,6 +46,9 @@ export class LoginComponent implements OnInit {
 
   reloadPage(): void {
     window.location.reload();
+  }
+  forgotPass() {
+    this.isForgotPass = true;
   }
 
   log(data): void {

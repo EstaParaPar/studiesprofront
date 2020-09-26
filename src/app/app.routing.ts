@@ -10,18 +10,21 @@ import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 import { HomeComponent } from './views/home/home.component';
 import { ProfileComponent } from './views/profile/profile.component';
-import { BoardUserComponent } from './views/board-user/board-user.component';
-import { BoardModeratorComponent } from './views/board-moderator/board-moderator.component';
-import { BoardAdminComponent } from './views/board-admin/board-admin.component';
-
 
 
 export const routes: Routes = [
-  { path: 'user', component: BoardUserComponent },
-  { path: 'mod', component: BoardModeratorComponent },
-  { path: 'admin', component: BoardAdminComponent },
   {
     path: 'dash_admin',
+    redirectTo: 'dashboard',
+    pathMatch: 'full',
+  },
+  {
+    path: 'dash_doctor',
+    redirectTo: 'dashboardDoctor',
+    pathMatch: 'full',
+  },
+  {
+    path: 'dash_tecnico',
     redirectTo: 'dashboard',
     pathMatch: 'full',
   },
@@ -81,6 +84,10 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
+      },
+      {
+        path: 'dashboardDoctor',
+        loadChildren: () => import('./views/dashboard_doctor/dashboardDoctor.module').then(m => m.DashboardDoctorModule)
       },
       {
         path: 'icons',

@@ -47,9 +47,7 @@ import { StudiestypeService } from './service/studiestype.service';
 import { MachinesService } from './service/machines.service';
 import { ProfileComponent } from './views/profile/profile.component';
 import { HomeComponent } from './views/home/home.component';
-import { BoardAdminComponent } from './views/board-admin/board-admin.component';
-import { BoardModeratorComponent } from './views/board-moderator/board-moderator.component';
-import { BoardUserComponent } from './views/board-user/board-user.component';
+
 
 
 @NgModule({
@@ -77,10 +75,7 @@ import { BoardUserComponent } from './views/board-user/board-user.component';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    HomeComponent,
-    BoardAdminComponent,
-    BoardModeratorComponent,
-    BoardUserComponent
+    HomeComponent
   ],
   providers: [
     authInterceptorProviders,

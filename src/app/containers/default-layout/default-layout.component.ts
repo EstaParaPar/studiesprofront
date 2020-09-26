@@ -1,7 +1,8 @@
-import {Component} from '@angular/core';
-import { navItems } from '../../_nav';
-//import { navItems1 } from '../../_nav';
-//import { navItems2 } from '../../_nav';
+import { Component, OnInit } from '@angular/core';
+import { TokenStorageService } from '../../service/token-storage.service';
+import { navItemsAdmin } from '../../_navAdmin';
+import { navItemsDoctor } from '../../_navDoctor';
+import { navItemsUser } from '../../_navUser';
 
 
 @Component({
@@ -9,8 +10,34 @@ import { navItems } from '../../_nav';
   templateUrl: './default-layout.component.html'
 })
 export class DefaultLayoutComponent {
+  private name: string;
+  private lastname: string;
+  private roles: string;
   public sidebarMinimized = false;
-  public navItems = navItems;
+  public navInUse = null;
+  isLoggedIn = false;
+
+  constructor(private tokenStorageService: TokenStorageService) { }
+ 
+  ngOnInit() {
+    const user = this.tokenStorageService.getUser();
+      this.name = user.name;
+      this.lastname = user.lastname;
+      this.roles = user.role;
+      console.log(user);
+      console.log(this.roles);
+
+      if (this.roles === 'Admin') {
+        this.navInUse = navItemsAdmin;
+      }
+      if (this.roles === 'Doctor') {
+        this.navInUse = navItemsDoctor;
+      }
+      if (this.roles === 'Tecnico') {
+        this.navInUse = navItemsUser;
+      }
+    }
+
 
   toggleMinimize(e) {
     this.sidebarMinimized = e;
