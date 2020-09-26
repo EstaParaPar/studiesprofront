@@ -8,8 +8,18 @@ import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
+import { HomeComponent } from './views/home/home.component';
+import { ProfileComponent } from './views/profile/profile.component';
+import { BoardUserComponent } from './views/board-user/board-user.component';
+import { BoardModeratorComponent } from './views/board-moderator/board-moderator.component';
+import { BoardAdminComponent } from './views/board-admin/board-admin.component';
+
+
 
 export const routes: Routes = [
+  { path: 'user', component: BoardUserComponent },
+  { path: 'mod', component: BoardModeratorComponent },
+  { path: 'admin', component: BoardAdminComponent },
   {
     path: '',
     redirectTo: 'dashboard',
@@ -22,6 +32,7 @@ export const routes: Routes = [
       title: 'Page 404'
     }
   },
+
   {
     path: '500',
     component: P500Component,

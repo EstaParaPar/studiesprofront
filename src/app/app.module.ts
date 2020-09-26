@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-
+import { authInterceptorProviders } from './helpers/auth.interceptor';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -15,7 +15,7 @@ import { AppComponent } from './app.component';
 
 // Import containers
 import { DefaultLayoutComponent } from './containers';
-
+import { FormsModule }   from '@angular/forms';
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
@@ -45,10 +45,16 @@ import { ChartsModule } from 'ng2-charts';
 import { HttpClientModule } from '@angular/common/http';
 import { StudiestypeService } from './service/studiestype.service';
 import { MachinesService } from './service/machines.service';
+import { ProfileComponent } from './views/profile/profile.component';
+import { HomeComponent } from './views/home/home.component';
+import { BoardAdminComponent } from './views/board-admin/board-admin.component';
+import { BoardModeratorComponent } from './views/board-moderator/board-moderator.component';
+import { BoardUserComponent } from './views/board-user/board-user.component';
 
 
 @NgModule({
   imports: [
+    FormsModule,
     HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
@@ -69,15 +75,22 @@ import { MachinesService } from './service/machines.service';
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfileComponent,
+    HomeComponent,
+    BoardAdminComponent,
+    BoardModeratorComponent,
+    BoardUserComponent
   ],
   providers: [
+    authInterceptorProviders,
     StudiestypeService,
-    MachinesService,
+    MachinesService, 
     {
     provide: LocationStrategy,
     useClass: HashLocationStrategy
-  }
+    }
+    
   ],
   bootstrap: [ AppComponent ]
 })

@@ -1,64 +1,48 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AuthService } from '@service/auth.service';
-import { fromEventPattern, Subscription } from 'rxjs';
-import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../service/auth.service';
+import { TokenStorageService } from '../../service/token-storage.service';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: 'login.component.html'
+  selector: 'app-login',
+  templateUrl: './login.component.html'
 })
-export class LoginComponent implements OnInit, OnDestroy {
-  hide = true;
-  private subscription: Subscription = new Subscription();
-  private isValidEmail = /\S+@\S+\.\S+/;
-  loginForm = this.fb.group({
-    username: ['', [Validators.required, Validators.pattern(this.isValidEmail)]],
-    password: ['', [Validators.required, Validators.minLength(8)]],
-  });
+export class LoginComponent implements OnInit {
 
-  constructor(private authSvc: AuthService, private fb:FormBuilder, private router: Router) { }
-  ngOnInit(): void { }
+  form: any = {};
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string[] = [];
 
-  
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
+
+  ngOnInit(): void {
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+      this.roles = this.tokenStorage.getUser().roles;
+    }
   }
 
+  onSubmit(): void {
+    this.authService.login(this.form).subscribe(
+      data => {
+        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveUser(data);
 
-  onLogin(): void{
-
-    if (this.loginForm.invalid) {
-      return;
-    }
-
-    const formValue = this.loginForm.value;
-    this.subscription.add(
-      this.authSvc.login(formValue).subscribe(res => {
-        if (res) {
-          this.router.navigate(['']);
-        }
-      })
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.roles = this.tokenStorage.getUser().roles;
+        this.reloadPage();
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isLoginFailed = true;
+      }
     );
   }
 
-  getErrorMessage(field: string): string { 
-    let message;
-    if (this.loginForm.get(field).errors.required) {
-      message = ' Este campo no puede estar vacio ';
-    } else if (this.loginForm.get(field).hasError('pattern')) {
-      message = 'No es un email valido.';
-    } else if (this.loginForm.get(field).hasError('minlength')) {
-      const minLength = this.loginForm.get(field).errors?.minlength
-        .requiredLength;
-      message = `El password debe se de al menos ${minLength} caracteres`;
-    }
-    return message;
+  reloadPage(): void {
+    window.location.reload();
   }
-  isValidField(field: string):boolean {
-    return ( (this.loginForm.get(field).touched || this.loginForm.get(field).dirty)
-      && !this.loginForm.get(field).valid
-      );
-  }
+
 }
