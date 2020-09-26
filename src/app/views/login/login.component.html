@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-md-6 mx-auto">
 
-          <div class="card-group">
+          <div class="card-group" *ngIf="!isLoggedIn">
             <div class="card p-4">
               <div style="   text-align: center;">
                 <img src="assets/img/brand/logo.svg" style="width: 40%;">
@@ -92,10 +92,6 @@
                     </div>
                   </div>
                 </form>
-
-                <div class="alert alert-success" *ngIf="isLoggedIn">
-                  Logged in as {{ roles }}.
-                </div>
 
 
 
