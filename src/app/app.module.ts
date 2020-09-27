@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
+import { LogoutComponent } from './views/login/logout.component';
 import { RegisterComponent } from './views/register/register.component';
 
 const APP_CONTAINERS = [
@@ -73,6 +74,7 @@ import { HomeComponent } from './views/home/home.component';
     P404Component,
     P500Component,
     LoginComponent,
+      LogoutComponent,
     RegisterComponent,
     ProfileComponent,
     HomeComponent

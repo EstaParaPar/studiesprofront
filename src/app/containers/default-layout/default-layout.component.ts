@@ -3,7 +3,7 @@ import { TokenStorageService } from '../../service/token-storage.service';
 import { navItemsAdmin } from '../../_navAdmin';
 import { navItemsDoctor } from '../../_navDoctor';
 import { navItemsUser } from '../../_navUser';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,7 +17,7 @@ export class DefaultLayoutComponent {
   public navInUse = null;
   isLoggedIn = false;
 
-  constructor(private tokenStorageService: TokenStorageService) { }
+  constructor(private router: Router, private tokenStorageService: TokenStorageService) { }
  
   ngOnInit() {
     const user = this.tokenStorageService.getUser();
@@ -41,5 +41,8 @@ export class DefaultLayoutComponent {
 
   toggleMinimize(e) {
     this.sidebarMinimized = e;
+  }
+  logout() {
+      this.router.navigate(['logout']);
   }
 }

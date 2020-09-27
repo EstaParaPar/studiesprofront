@@ -7,6 +7,7 @@ import { DefaultLayoutComponent } from './containers';
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
+import { LogoutComponent } from './views/login/logout.component';
 import { RegisterComponent } from './views/register/register.component';
 import { HomeComponent } from './views/home/home.component';
 import { ProfileComponent } from './views/profile/profile.component';
@@ -35,6 +36,13 @@ export const routes: Routes = [
       title: 'Login Page'
     }
   },
+    {
+        path: 'logout',
+        component: LogoutComponent,
+        data: {
+            title: 'Logout Page'
+        }
+    },
   {
     path: '404',
     component: P404Component,
