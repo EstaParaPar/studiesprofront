@@ -45,4 +45,8 @@ export class DefaultLayoutComponent {
   logout() {
       this.router.navigate(['logout']);
   }
+
+  profile() {
+    this.router.navigate(['profile']);
+  }
 }

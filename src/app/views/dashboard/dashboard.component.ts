@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
+import { Router } from '@angular/router';
+import { TokenStorageService } from '../../service/token-storage.service';
 
 @Component({
   templateUrl: 'dashboard.component.html'
@@ -372,13 +374,26 @@ export class DashboardComponent implements OnInit {
   ];
   public brandBoxChartLegend = false;
   public brandBoxChartType = 'line';
+  
+  constructor(private router: Router, private tokenStorageService: TokenStorageService) { }
 
+  
   public random(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
   ngOnInit(): void {
+    if (!this.tokenStorageService.isloggedin()) {
+      this.router.navigate([''])
+    } else {
+      this.init()
+    }
+  }
+  init():void{
+
     // generate random values for mainChart
+
+
     for (let i = 0; i <= this.mainChartElements; i++) {
       this.mainChartData1.push(this.random(50, 200));
       this.mainChartData2.push(this.random(80, 100));

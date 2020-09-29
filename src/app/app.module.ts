@@ -46,7 +46,6 @@ import { ChartsModule } from 'ng2-charts';
 import { HttpClientModule } from '@angular/common/http';
 import { StudiestypeService } from './service/studiestype.service';
 import { MachinesService } from './service/machines.service';
-import { ProfileComponent } from './views/profile/profile.component';
 import { HomeComponent } from './views/home/home.component';
 
 
@@ -76,7 +75,6 @@ import { HomeComponent } from './views/home/home.component';
     LoginComponent,
       LogoutComponent,
     RegisterComponent,
-    ProfileComponent,
     HomeComponent
   ],
   providers: [

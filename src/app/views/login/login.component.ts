@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().role;
     
-      this.reloadPage();
+      this.reloadPage(); //molestaba cuando logeabas y no dejaba cargar
+      
       
     }
     
