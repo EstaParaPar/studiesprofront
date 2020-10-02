@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
+import { TokenStorageService } from '../../service/token-storage.service';
+import { Router } from '@angular/router';
+import {MachinesService} from '../../service/machines.service'
+import { StudiestypeService } from '../../service/studiestype.service';
 
 @Component({
   templateUrl: 'dashboardDoctor.component.html'
@@ -376,12 +380,42 @@ export class DashboardDoctorComponent implements OnInit {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
+  dataArray = [];
+  estudiosArray = [];
+  currentUser: any;
+  constructor(private studiesTypeService: StudiestypeService,private machinesService: MachinesService, private router: Router, private tokenStorageService: TokenStorageService) { }
+
   ngOnInit(): void {
-    // generate random values for mainChart
-    for (let i = 0; i <= this.mainChartElements; i++) {
-      this.mainChartData1.push(this.random(50, 200));
-      this.mainChartData2.push(this.random(80, 100));
-      this.mainChartData3.push(65);
+    if (!this.tokenStorageService.isloggedin()) {
+      this.router.navigate([''])
+    } else {
+      this.init()
     }
+
+    this.machinesService.getMachines().subscribe((data: any[]) => {
+      // console.log(data);
+      this.dataArray = data;
+    });
+
+    this.studiesTypeService.getStudiesType().subscribe((estudios: any[]) => {
+      // console.log(data);
+       this.estudiosArray = estudios;
+     });
+    
+
+      // generate random values for mainChart
+  for (let i = 0; i <= this.mainChartElements; i++) {
+    this.mainChartData1.push(this.random(50, 200));
+    this.mainChartData2.push(this.random(80, 100));
+    this.mainChartData3.push(65);
   }
+  }
+
+    
+  init():void{
+
+    this.currentUser = this.tokenStorageService.getUser();
+  }
+
 }
+

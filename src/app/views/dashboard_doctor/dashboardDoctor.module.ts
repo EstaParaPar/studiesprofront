@@ -5,6 +5,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { DashboardDoctorComponent } from './dashboardDoctor.component';
 import { DashboardDoctorRoutingModule } from './dashboardDoctor-routing.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [
@@ -12,8 +13,9 @@ import { DashboardDoctorRoutingModule } from './dashboardDoctor-routing.module';
     DashboardDoctorRoutingModule,
     ChartsModule,
     BsDropdownModule,
+    CommonModule,
     ButtonsModule.forRoot()
   ],
-  declarations: [ DashboardDoctorComponent ]
+  declarations: [ DashboardDoctorComponent]
 })
 export class DashboardDoctorModule { }

@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import {MachinesComponent} from '../setup/machines/machines.component';
-import {StudiestypeComponent} from './studiestype/studiestype.component';
+import { StudiestypeComponent } from './studiestype/studiestype.component';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   {
@@ -28,8 +29,14 @@ const routes: Routes = [
         data: {
           title: 'studies'
         }
+      },
+      {
+        path: 'users',
+        component: UsersComponent,
+        data: {
+          title: 'users'
+        }
       }
-
     ]
   }
 ];

@@ -162,6 +162,11 @@ export const navItemsAdmin: INavData[] = [
         name: 'Estudios',
         url: '/setup/studies',
         icon: 'icon-puzzle'
+      },
+      {
+        name: 'Usuarios',
+        url: '/setup/users',
+        icon: 'icon-puzzle'
       }
       ]
   },
