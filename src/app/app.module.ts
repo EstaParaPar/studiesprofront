@@ -47,6 +47,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { StudiestypeService } from './service/studiestype.service';
 import { MachinesService } from './service/machines.service';
 import { HomeComponent } from './views/home/home.component';
+import { HealthInsuranceService } from '@service/healthinsurance.service';
 
 
 
@@ -80,12 +81,13 @@ import { HomeComponent } from './views/home/home.component';
   providers: [
     authInterceptorProviders,
     StudiestypeService,
-    MachinesService, 
+    MachinesService,
+    HealthInsuranceService,
     {
     provide: LocationStrategy,
     useClass: HashLocationStrategy
     }
-    
+
   ],
   bootstrap: [ AppComponent ]
 })

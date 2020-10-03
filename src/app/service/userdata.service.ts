@@ -5,12 +5,16 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { TokenStorageService } from '../service/token-storage.service';
 import { AuthInterceptor } from '../helpers/auth.interceptor';
 
+
+import { environment } from '@env/environment';
+
+const AUTH_API = environment.API_URL;
 @Injectable({
   providedIn: 'root'
 })
 export class UserdataService {
   
-  apiUrl: string = 'http://localhost:3000/users';
+  apiUrl: string = AUTH_API + '/users';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient, private TokenStorageService : TokenStorageService) { }

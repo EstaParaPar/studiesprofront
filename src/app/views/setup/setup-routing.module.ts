@@ -4,6 +4,9 @@ import { Routes, RouterModule } from '@angular/router';
 import {MachinesComponent} from '../setup/machines/machines.component';
 import { StudiestypeComponent } from './studiestype/studiestype.component';
 import { UsersComponent } from './users/users.component';
+import {EditstudiestypeComponent} from './studiestype/editstudiestype.component';
+import {HealthInsuranceComponent} from './healthinsurance/healthinsurance.component';
+import {NewHealthInsuranceComponent} from './healthinsurance/newhealthinsurance.component';
 
 const routes: Routes = [
   {
@@ -29,7 +32,26 @@ const routes: Routes = [
         data: {
           title: 'studies'
         }
+      },{
+        path: 'healthins',
+        component: HealthInsuranceComponent,
+        data: {
+          title: 'healthins'
+        }
+      },{
+        path: 'newhealthins',
+        component: NewHealthInsuranceComponent,
+        data: {
+          title: 'newhealth'
+        }
       },
+        {
+            path: 'editstudy/:id',
+            component: EditstudiestypeComponent,
+            data: {
+                title: 'full'
+            }
+        },
       {
         path: 'users',
         component: UsersComponent,

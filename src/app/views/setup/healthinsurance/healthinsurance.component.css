@@ -1,0 +1,8 @@
+@media only screen and (max-width: 800px) {
+
+  /* Force table to not be like tables anymore */
+  #no-label  a {
+    display: none;
+  }
+
+}

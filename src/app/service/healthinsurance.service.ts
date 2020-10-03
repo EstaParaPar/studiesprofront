@@ -1,33 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { HttpClient, HttpHeaders, HttpParams, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { environment } from '@env/environment';
 
 const AUTH_API = environment.API_URL;
-
 @Injectable({
   providedIn: 'root'
 })
-export class StudiestypeService {
+export class HealthInsuranceService {
 
-  apiUrl: string = AUTH_API + '/studiesType';
+  apiUrl: string = AUTH_API + '/healthInsurance';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) { }
-
-
   // Read
-  getStudiesType() {
+  getHealthInsurance () {
     return this.http.get(`${this.apiUrl}`);
   }
 
-  getStudyType(idStudy) {
-
-      const url = this.apiUrl + '/' + idStudy;
-      return this.http.get(`${url}`);
-  }
-  update(id, data): Observable<any> {
-        return this.http.patch(`${this.apiUrl}/${id}`, data);
+  create(data): Observable<any> {
+        return this.http.post(`${this.apiUrl}` , data);
   }
 }

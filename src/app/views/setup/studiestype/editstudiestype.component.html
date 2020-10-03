@@ -1,0 +1,79 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Editar Estudio</strong>
+        </div>
+        <div class="card-body">
+
+          <div *ngIf="currentStudytype" class="edit-form">
+
+            <form>
+              <div class="form-group">
+                <label for="title">Nombre</label>
+                <input
+                        type="text"
+                        class="form-control"
+                        id="title"
+                        [(ngModel)]="currentStudytype.name"
+                        name="title"
+                />
+              </div>
+              <div class="form-group">
+                <label for="description">Precio</label>
+                <input
+                        type="number"
+                        class="form-control"
+                        id="description"
+                        [(ngModel)]="currentStudytype.price"
+                        name="description"
+                />
+              </div>
+
+
+            </form>
+
+            <div class="row">
+              <div class="col-6">
+
+                <button type="button" class="btn btn-block btn-light active "    (click)="volver()" >
+                  Volver
+                </button>
+
+              </div>
+              <div class="col-6 text-right">
+                <div class="form-group">
+                  <button class="btn btn-primary btn-block"
+                          type="submit"
+
+                          (click)="updateStudyType()">
+                    Guardar
+                  </button>
+                </div>
+              </div>
+            </div>
+
+
+
+            <p>{{ message }}</p>
+          </div>
+
+          <div *ngIf="!currentStudytype">
+            <br />
+            <p>No se puede acceder al Elemento...</p>
+          </div>
+
+
+        </div><!--/.row-->
+
+        </div>
+      </div>
+    </div><!--/.col-->
+</div>
+
+
+
+
+
+

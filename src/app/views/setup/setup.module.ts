@@ -7,6 +7,9 @@ import { StudiestypeComponent } from './studiestype/studiestype.component';
 import { UsersComponent } from './users/users.component';
 
 import { SetupRoutingModule } from './setup-routing.module';
+import {EditstudiestypeComponent} from './studiestype/editstudiestype.component';
+import {HealthInsuranceComponent} from './healthinsurance/healthinsurance.component';
+import {NewHealthInsuranceComponent} from './healthinsurance/newhealthinsurance.component';
 
 
 @NgModule({
@@ -18,9 +21,12 @@ import { SetupRoutingModule } from './setup-routing.module';
 
   ],
   declarations: [
-    UsersComponent,
-    MachinesComponent,
-    StudiestypeComponent
+      UsersComponent,
+      MachinesComponent,
+      StudiestypeComponent,
+      EditstudiestypeComponent,
+      HealthInsuranceComponent,
+      NewHealthInsuranceComponent
   ]
 })
 export class SetupModule { }
