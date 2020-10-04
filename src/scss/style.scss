@@ -8,3 +8,11 @@
 @import "custom";
 
 @import "~@ng-select/ng-select/themes/default.theme.css";
+
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option{
+  background-color:#fff;
+  color:rgba(0,0,0,0.87);
+  padding:8px 10px;
+  white-space: normal !important;
+}

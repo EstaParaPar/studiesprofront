@@ -1,3 +1,6 @@
-.ng-dropdown-panel.ng-select-bottom {
-    width: auto !important; max-width: 550px; }
-
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option{
+    background-color:#fff;
+    color:rgba(0,0,0,0.87);
+    padding:8px 10px;
+    white-space: normal !important;
+}

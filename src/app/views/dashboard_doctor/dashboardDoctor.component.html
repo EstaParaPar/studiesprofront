@@ -36,11 +36,21 @@
                   <div class="col-md-12">
                     <div id="selectStudy"  class="row" style=" display: contents">
                       <ng-select id="selectStudy" [items]="estudiosArray"
-                                 [ngStyle]= "{width:'auto !important'}"
+                                 [searchable]="true"
+                                 [clearable]="true"
                                  bindLabel="name"
                                  bindValue="id"
                                  placeholder="Seleccionar Estudio"
                                  [(ngModel)]="selectedStudyId">
+
+                        <ng-template ng-label-tmp let-item="item">
+                          <b>{{item.name}}</b>
+                        </ng-template>
+                        <ng-template ng-option-tmp let-item="item" let-index="index">
+                          <i class="fa fa-tag "></i>
+                          {{item.name}}
+                        </ng-template>
+
                       </ng-select>
                     </div>
 
@@ -73,16 +83,24 @@
                     <div class="row" style=" display: contents">
                       <ng-select [items]="doctorArray"
                                  [ngStyle]= "{width:'auto !important'}"
+                                 appendTo="body"
+                                 [searchable]="true"
+                                 [clearable]="true"
                                  bindLabel="name"
-                                 bindValue="id"
+
                                  placeholder="Seleccionar Medico"
                                  [(ngModel)]="selectedDoctorId">
 
                         <ng-template ng-label-tmp let-item="item">
-                          <div>{{item.lastname}}, {{item.name}}</div>
-
+                          {{item.name}} {{item.lastname}}
+                        </ng-template>
+                        <ng-template ng-option-tmp let-item="item" let-index="index">
+                          {{item.name}} {{item.lastname}}
                         </ng-template>
                       </ng-select>
+
+
+
                     </div>
 
 
@@ -100,7 +118,7 @@
               <div class="form-group row"  >
                 <label  class="col-md-6 col-form-label" for="date-input">Buscar Paciente</label>
                 <div class="col-md-6">
-                  <button id="no-label" class="btn btn-primary float-right" type="button" (click)="addPatient()">
+                  <button id="no-label" class="btn btn-primary btn-sm float-right" type="button" (click)="addPatient()">
                     <i class="fa fa-user-plus fa-lg"></i>
                   </button>
                 </div>
