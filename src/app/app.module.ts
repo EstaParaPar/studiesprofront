@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { LocationStrategy, HashLocationStrategy, CommonModule} from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
@@ -15,12 +15,18 @@ import { AppComponent } from './app.component';
 
 // Import containers
 import { DefaultLayoutComponent } from './containers';
-import { FormsModule } from '@angular/forms';
+
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { LogoutComponent } from './views/login/logout.component';
 import { RegisterComponent } from './views/register/register.component';
+
+
+import { FormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
+
+
 
 const APP_CONTAINERS = [
   DefaultLayoutComponent
@@ -54,7 +60,9 @@ import { PatientsService } from '@service/patients.service';
 
 @NgModule({
   imports: [
+    CommonModule,
     FormsModule,
+    NgSelectModule,
     HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,

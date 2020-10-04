@@ -15,7 +15,7 @@ export class PatientsService {
 
   constructor(private http: HttpClient) { }
   // Read
-  getHealthInsurance () {
+  getPatients () {
     return this.http.get(`${this.apiUrl}`);
   }
 

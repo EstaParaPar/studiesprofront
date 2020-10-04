@@ -13,120 +13,150 @@
             <div class="row">
             <div class="col-md-6">
             <div class="form-group row">
-              <label class="col-md-12 col-form-label">Usuario</label>
-               </div>
-              <div class="form-group row">
+                  <label class="col-md-12 col-form-label">Usuario</label>
+                   </div>
+                  <div class="form-group row">
 
-              <div class="col-md-12">
-                <p class="form-control-static">{{currentUser.username}}</p>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-md-12 col-form-label" for="date-input">Fecha</label>
-            </div>
+                  <div class="col-md-12">
+                    <p class="form-control-static">{{currentUser.username}}</p>
+                  </div>
+                </div>
               <div class="form-group row">
-              <div class="col-md-12">
-                <input class="form-control" id="date-input" type="date" name="date-input" placeholder="date">
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label class="col-md-12 col-form-label" for="select1">Medico:</label>
-            </div>
-              <div class="form-group row">
-              <div class="col-md-12">
-                <select id="select3" name="select3" class="form-control">
-                  <option *ngFor="let n of doctorArray;let i = index" [value]="n.id">{{n.lastname}}, {{n.name}}</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-md-12 col-form-label" for="select1">Maquina usada:</label>
-            </div>
-              <div class="form-group row">
-              <div class="col-md-12">
-                <select id="select1" name="select1" class="form-control">
-                  <option *ngFor="let n of dataArray;let i = index" [value]="n.id">{{n.name}}</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-md-12 col-form-label" for="select1">Estudio realizado:</label>
+                  <label class="col-md-12 col-form-label" for="date-input">Fecha</label>
               </div>
               <div class="form-group row">
-              <div class="col-md-12">
-                <select id="select2" name="select2" class="form-control">
-                  <option *ngFor="let n of estudiosArray;let i = index" [value]="n.id">{{n.name}}</option>
-                </select>
+                  <div class="col-md-12">
+                    <input class="form-control" id="date-input" type="date" name="date-input" placeholder="date">
+                  </div>
               </div>
-            </div>
-            </div>
-      <!-- ----------------------------------->  <div class="col-md-6">
-            <div class="form-group row">
-              <label class="col-md-12 col-form-label">Paciente</label>
-              <label class="col-md-12 col-form-label">DNI - DU</label>
-               </div>
               <div class="form-group row">
-
-              <div class="col-md-12">
-                <input
-                        type="number"
-                        class="form-control"
-                        id="dni"
-                        name="dni"
-                />
+                  <label class="col-md-12 col-form-label" for="date-input"><b>Estudio</b></label>
               </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-6 col-form-label" for="date-input">Nombre  </label>
-              <label class="col-6 col-form-label" for="date-input">Apellido  </label>
-            </div>
               <div class="form-group row">
-              <div class="col-6">
-                <input
-                        type="text"
-                        class="form-control"
-                        id="name"
-                        name="name"
-                />
+                  <div class="col-md-12">
+                    <div id="selectStudy"  class="row" style=" display: contents">
+                      <ng-select id="selectStudy" [items]="estudiosArray"
+                                 [ngStyle]= "{width:'auto !important'}"
+                                 bindLabel="name"
+                                 bindValue="id"
+                                 placeholder="Seleccionar Estudio"
+                                 [(ngModel)]="selectedStudyId">
+                      </ng-select>
+                    </div>
 
-              </div>
-                <div class="col-6">
-                  <input
-                          type="number"
-                          class="form-control"
-                          id="lastname"
-                          name="lastname"
-                  />
-              </div>
-            </div>
 
-            <div class="form-group row">
-              <label class="col-md-12 col-form-label" for="select1">Prepaga - Obra Social</label>
-            </div>
+                  </div>
+              </div>
+
               <div class="form-group row">
-              <div class="col-md-12">
-                <select id="select3" name="select3" class="form-control">
-                  <option *ngFor="let n of dataHealthIn;let i = index" [value]="n.id">{{n.name}}</option>
-                </select>
+                  <label class="col-md-12 col-form-label" for="date-input"><b>Equipo</b></label>
+              </div>
+              <div class="form-group row">
+                  <div class="col-md-12">
+                    <div class="row" style=" display: contents">
+                      <ng-select [items]="machineArray"
+                                 bindLabel="name"
+                                 bindValue="id"
+                                 placeholder="Seleccionar Equipo"
+                                 [(ngModel)]="selectedMachineId">
+                      </ng-select>
+                    </div>
+
+
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <label class="col-md-12 col-form-label" for="date-input"><b>Medico</b></label>
+              </div>
+              <div class="form-group row">
+                  <div class="col-md-12">
+                    <div class="row" style=" display: contents">
+                      <ng-select [items]="doctorArray"
+                                 [ngStyle]= "{width:'auto !important'}"
+                                 bindLabel="name"
+                                 bindValue="id"
+                                 placeholder="Seleccionar Medico"
+                                 [(ngModel)]="selectedDoctorId">
+
+                        <ng-template ng-label-tmp let-item="item">
+                          <div>{{item.lastname}}, {{item.name}}</div>
+
+                        </ng-template>
+                      </ng-select>
+                    </div>
+
+
+                  </div>
+              </div>
+
+
+                </div>
+
+
+
+
+            <div class="col-md-6">
+              <div *ngIf="!newPatient" >
+              <div class="form-group row"  >
+                <label  class="col-md-6 col-form-label" for="date-input">Buscar Paciente</label>
+                <div class="col-md-6">
+                  <button id="no-label" class="btn btn-primary float-right" type="button" (click)="addPatient()">
+                    <i class="fa fa-user-plus fa-lg"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="row" style=" display: contents">
+                  <ng-select [items]="patients"
+                             bindLabel="dni"
+                             bindValue="id"
+                             placeholder="Seleccionar DNI"
+                             [(ngModel)]="selectedPatientsId"
+
+                             (change)="onChange($event)">
+                  </ng-select>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-12 col-form-label"><b>DNI</b></label>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-6 " >
+                  {{selectedDNI}}
+                </label>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-6 col-form-label" ><b>Nombre</b></label>
+                <label class="col-md-6 col-form-label" ><b>Apellido</b></label>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-6 " >{{selectedNAME}}</label>
+                <label class="col-md-6 " >{{selectedLASTNAME}}</label>
               </div>
               </div>
+              <div *ngIf="newPatient" >
+                <div class="form-group row"  >
+                  <label  class="col-md-6 col-form-label" for="date-input">Nuevo Paciente</label>
+
+                </div>
+              </div>
+            </div>
+
+
+
 
             </div>
-            </div>
-      <!-- ----------------------------------->
-
-
 
 
 
 
           </form>
         </div>
+
         <div class="card-footer">
           <button type="submit" class="btn btn-sm btn-dark"><i class="fa fa-dot-circle-o"></i> Submit</button>
           <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
         </div>
       </div>
-    </div><!--/.col-->
-  </div><!--/.row-->
+    </div>
+  </div>
+
+
