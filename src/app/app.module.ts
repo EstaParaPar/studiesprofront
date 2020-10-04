@@ -48,6 +48,7 @@ import { StudiestypeService } from './service/studiestype.service';
 import { MachinesService } from './service/machines.service';
 import { HomeComponent } from './views/home/home.component';
 import { HealthInsuranceService } from '@service/healthinsurance.service';
+import { PatientsService } from '@service/patients.service';
 
 
 
@@ -83,6 +84,7 @@ import { HealthInsuranceService } from '@service/healthinsurance.service';
     StudiestypeService,
     MachinesService,
     HealthInsuranceService,
+    PatientsService,
     {
     provide: LocationStrategy,
     useClass: HashLocationStrategy
