@@ -13,8 +13,9 @@ const AUTH_API = environment.API_URL;
   providedIn: 'root'
 })
 export class UserdataService {
-  
+
   apiUrl: string = AUTH_API + '/users';
+  apiUrlDoctor: string = AUTH_API + '/doctors';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient, private TokenStorageService : TokenStorageService) { }
@@ -24,6 +25,10 @@ export class UserdataService {
 
     // Read
     getUsersData() {
-      return this.http.get(`${this.apiUrl}`);
+        return this.http.get(`${this.apiUrl}`);
+    }
+    getDoctors() {
+        return this.http.get(`${this.apiUrlDoctor}`);
+
     }
 }

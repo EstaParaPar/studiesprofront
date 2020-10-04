@@ -4,8 +4,8 @@
 
 export const environment = {
     production: false,
-    API_URL: 'http://localhost:3000'
-    // API_URL: 'http://192.168.200.24:3000'
+    // API_URL: 'http://localhost:3000'
+    API_URL: 'http://192.168.200.24:3000'
 };
 
 /*
@@ -16,3 +16,6 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+
+

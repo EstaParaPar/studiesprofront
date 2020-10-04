@@ -1,101 +1,5 @@
 <div class="animated fadeIn">
-  <div class="row">
-    <div class="col-sm-6 col-lg-3">
-      <div class="card text-white bg-info">
-        <div class="card-body pb-0">
-          <button type="button" class="btn btn-transparent p-0 float-right">
-            <i class="icon-location-pin"></i>
-          </button>
-          <div class="text-value">9.823</div>
-          <div>Members online</div>
-        </div>
-        <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
-          <canvas baseChart class="chart"
-          [datasets]="lineChart2Data"
-          [labels]="lineChart2Labels"
-          [options]="lineChart2Options"
-          [colors]="lineChart2Colours"
-          [legend]="lineChart2Legend"
-          [chartType]="lineChart2Type"></canvas>
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-lg-3">
-      <div class="card text-white bg-primary">
-        <div class="card-body pb-0">
-          <div class="btn-group float-right" dropdown>
-            <button type="button" class="btn btn-transparent dropdown-toggle p-0" dropdownToggle>
-              <i class="icon-settings"></i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </div>
-          <div class="text-value">9.823</div>
-          <div>Members online</div>
-        </div>
-        <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
-          <canvas baseChart class="chart"
-                  [datasets]="lineChart1Data"
-                  [labels]="lineChart1Labels"
-                  [options]="lineChart1Options"
-                  [colors]="lineChart1Colours"
-                  [legend]="lineChart1Legend"
-                  [chartType]="lineChart1Type"></canvas>
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-lg-3">
-      <div class="card text-white bg-warning">
-        <div class="card-body pb-0">
-          <div class="btn-group float-right" dropdown>
-            <button type="button" class="btn btn-transparent dropdown-toggle p-0" dropdownToggle>
-              <i class="icon-settings"></i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </div>
-          <div class="text-value">9.823</div>
-          <div>Members online</div>
-        </div>
-        <div class="chart-wrapper mt-3" style="height:70px;">
-          <canvas baseChart class="chart"
-          [datasets]="lineChart3Data"
-          [labels]="lineChart3Labels"
-          [options]="lineChart3Options"
-          [colors]="lineChart3Colours"
-          [legend]="lineChart3Legend"
-          [chartType]="lineChart3Type"></canvas>
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-lg-3">
-      <div class="card text-white bg-danger">
-        <div class="card-body pb-0">
-          <div class="btn-group float-right" dropdown>
-            <button type="button" class="btn btn-transparent dropdown-toggle p-0" dropdownToggle>
-              <i class="icon-settings"></i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </div>
-          <div class="text-value">9.823</div>
-          <div>Members online</div>
-        </div>
-        <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
-        </div>
-      </div>
-    </div><!--/.col-->
-  </div><!--/.row-->
+
 
     <div class="row">
     <div class="col-md-12">
@@ -104,36 +8,60 @@
           <strong>Agregar estudio realizado</strong>
         </div>
         <div class="card-body">
+
           <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+            <div class="col-md-6">
             <div class="form-group row">
-              <label class="col-md-3 col-form-label">Usuario</label>
-              <div class="col-md-9">
+              <label class="col-md-12 col-form-label">Usuario</label>
+               </div>
+              <div class="form-group row">
+
+              <div class="col-md-12">
                 <p class="form-control-static">{{currentUser.username}}</p>
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-md-3 col-form-label" for="date-input">Fecha</label>
-              <div class="col-md-9">
+              <label class="col-md-12 col-form-label" for="date-input">Fecha</label>
+            </div>
+              <div class="form-group row">
+              <div class="col-md-12">
                 <input class="form-control" id="date-input" type="date" name="date-input" placeholder="date">
-                <span class="help-block">Please enter a valid date</span>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-12 col-form-label" for="select1">Maquina usada:</label>
+            </div>
+              <div class="form-group row">
+              <div class="col-md-12">
+                <select id="select3" name="select3" class="form-control">
+                  <option *ngFor="let n of doctorArray;let i = index" [value]="n.id">{{n.lastname}}, {{n.name}}</option>
+                </select>
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-md-3 col-form-label" for="select1">Maquina usada:</label>
-              <div class="col-md-9">
+              <label class="col-md-12 col-form-label" for="select1">Maquina usada:</label>
+            </div>
+              <div class="form-group row">
+              <div class="col-md-12">
                 <select id="select1" name="select1" class="form-control">
                   <option *ngFor="let n of dataArray;let i = index" [value]="n.id">{{n.name}}</option>
                 </select>
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-md-3 col-form-label" for="select1">Estudio realizado:</label>
-              <div class="col-md-9">
-                <select id="select1" name="select1" class="form-control">
+              <label class="col-md-12 col-form-label" for="select1">Estudio realizado:</label>
+              </div>
+              <div class="form-group row">
+              <div class="col-md-12">
+                <select id="select2" name="select2" class="form-control">
                   <option *ngFor="let n of estudiosArray;let i = index" [value]="n.id">{{n.name}}</option>
                 </select>
               </div>
             </div>
+            </div>
+
+
           </form>
         </div>
         <div class="card-footer">
