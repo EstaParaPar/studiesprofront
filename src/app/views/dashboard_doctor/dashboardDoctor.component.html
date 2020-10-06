@@ -11,7 +11,9 @@
 
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label class="col-md-12 col-form-label">Usuario</label>
+                                    <label class="col-md-12 col-form-label">
+                                        <b>Usuario</b>
+                                    </label>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-md-12">
@@ -19,7 +21,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-12 col-form-label" for="date-input">Fecha</label>
+                                    <label class="col-md-12 col-form-label" for="date-input">
+                                        <b>Fecha</b>
+                                    </label>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-md-12">
@@ -42,7 +46,7 @@
                                                        placeholder="Seleccionar Estudio"
                                                        [(ngModel)]="selectedStudyId">
                                                 <ng-template ng-label-tmp let-item="item">
-                                                    <b>{{item.name}}</b>
+                                                    {{item.name}}
                                                 </ng-template>
                                                 <ng-template ng-option-tmp let-item="item" let-index="index">
                                                     <i class="fa fa-tag "></i>
@@ -100,10 +104,13 @@
                             </div>
 
 
+
                             <div class="col-md-6">
                                 <div *ngIf="!newPatient">
                                     <div class="form-group row">
-                                        <label class="col-md-6 col-form-label" for="date-input">Buscar Paciente</label>
+                                        <label class="col-md-6 col-form-label" for="date-input">
+                                            <b>Buscar Paciente</b>
+                                        </label>
                                         <div class="col-md-6">
                                             <button class="btn btn-primary btn-sm float-right"
                                                     type="button" (click)="addPatient()">
@@ -129,20 +136,34 @@
                                             {{selectedDNI}}
                                         </label>
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-md-6 col-form-label"><b>Nombre</b></label>
-                                        <label class="col-md-6 col-form-label"><b>Apellido</b></label>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-md-6 col-form-label"><b>Nombre</b></label>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-6 ">{{selectedNAME}}</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-md-6 col-form-label"><b>Apellido</b></label>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-6 ">{{selectedLASTNAME}}</label>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-md-6 ">{{selectedNAME}}</label>
-                                        <label class="col-md-6 ">{{selectedLASTNAME}}</label>
-                                    </div>
+
+
                                 </div>
 
 
                                 <div *ngIf="newPatient">
                                     <div class="row">
-                                        <label class="col-md-6 col-form-label" for="date-input">Nuevo Paciente</label>
+                                        <label class="col-md-6 col-form-label" for="date-input">
+                                            <b>Nuevo Paciente</b>
+                                        </label>
                                         <div class="col-md-6">
                                             <button id="no-label" class="btn btn-primary btn-sm float-right"
                                                     type="button" (click)="findPatient()">
@@ -152,7 +173,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col md-12">
-                                            <label>Dni</label>
+                                            <label><b>DNI</b></label>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -162,44 +183,83 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="form-group row">
-                                            <label class="col-md-6 col-form-label"><b>Nombre</b></label>
-                                            <label class="col-md-6 col-form-label"><b>Apellido</b></label>
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="col md-12 form-group submit-form">
+                                                    <label class="col-form-label"><b>Nombre</b></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col md-12 form-group submit-form">
+                                                    <input type="text" name="name" class="form-control" placeholder="Nombre"
+                                                           [(ngModel)]="studies.pname"/>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class=" row">
-                                        <div class="col md-6 form-group submit-form">
-                                            <input type="text" name="name" class="form-control" placeholder="Nombre"
-                                                   [(ngModel)]="studies.pname"/>
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="col md-12 form-group submit-form">
+                                                    <label class="col-form-label"><b>Apellido</b></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col md-12 form-group submit-form">
+                                                    <input type="text" name="lastname" class="form-control"
+                                                           placeholder="Apellido" [(ngModel)]="studies.plastname"/>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col md-12 form-group submit-form">
-                                            <input type="text" name="lastname" class="form-control"
-                                                   placeholder="lastname" [(ngModel)]="studies.plastname"/>
-                                        </div>
+
                                     </div>
                                 </div>
+
+
+
+
                                 <div *ngIf="!newHealthIns">
                                     <div class="form-group row">
-                                        <label class="col-md-8 col-form-label" for="date-input">Obra Social</label>
+                                        <label class="col-md-8 col-form-label" for="date-input"><b> Obra Social </b></label>
                                         <div class="col-md-4">
                                             <button class="btn btn-primary btn-sm float-right"
                                                     type="button" (click)="addHealth()">
-                                                <i class="fa fa-user-plus fa-lg"></i>
+                                                <i class="fa fa-plus"></i>
                                             </button>
                                         </div>
+                                    </div>
+                                    <div class="row" style=" display: contents">
+                                        <ng-select [items]="dataHealthIn"
+                                                   bindLabel="name"
+                                                   bindValue="id"
+                                                   placeholder="Seleccionar Obra Social"
+                                                   [(ngModel)]="health.name"
+                                                   (change)="onChangeHealth($event)"
+                                                   (clear)="onRemoveHealth()"
+                                        >
+                                        </ng-select>
                                     </div>
                                 </div>
                                 <div *ngIf="newHealthIns">
                                     <div class="row">
-                                        <label class="col-md-8 col-form-label" for="date-input">Nuevo Obra Social</label>
+                                        <label class="col-md-8 col-form-label" for="date-input">
+                                            <b>Nueva Obra Social </b>
+                                        </label>
                                         <div class="col-md-4">
-                                            <button  class="btn btn-primary btn-sm float-right"
+                                            <button class="btn btn-primary btn-sm float-right"
                                                     type="button" (click)="findHealth()">
                                                 <i class="fa fa-mail-forward"></i>
                                             </button>
                                         </div>
                                     </div>
+                                    <div class=" row">
+                                        <div class="col md-12 form-group submit-form">
+                                            <input type="text" name="health" class="form-control" placeholder="Obra Social"
+                                                   [(ngModel)]="health.name"/>
+                                        </div>
+                                    </div>
                                 </div>
+
+
+
                             </div>
                         </div>
                     </form>

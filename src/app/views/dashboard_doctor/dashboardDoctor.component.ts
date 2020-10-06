@@ -28,11 +28,14 @@ export class DashboardDoctorComponent implements OnInit {
     currentUser: any;
     patients = [];
 
-    selectedCountries = [];
+
     selectedPatientsId: number;
     selectedDNI: number;
     selectedNAME: any;
     selectedLASTNAME: any;
+    selectedHealth: any;
+
+
     studies = {
         pname: '',
         plastname: '',
@@ -40,6 +43,9 @@ export class DashboardDoctorComponent implements OnInit {
     };
     date = {
         studyDate: ''
+    };
+    health = {
+        name: ''
     };
     newPatient = false;
     newHealthIns = false;
@@ -91,62 +97,24 @@ export class DashboardDoctorComponent implements OnInit {
 
     }
 
-    onChange = ($event: any): void => {
-        console.log($event);
-        if ($event != null) {
-            this.selectedDNI = $event.dni;
-            this.selectedNAME = $event.name;
-            this.selectedLASTNAME = $event.lastname;
-            this.selectedPatientsId = $event.id;
-        } else {
-            this.selectedDNI = null;
-            this.selectedNAME = '';
-            this.selectedLASTNAME = '';
-            this.selectedPatientsId = null;
-        }
-    };
-    onChangeStudy = ($event: any): void => {
-        console.log($event);
-        if ($event != null) {
-            this.selectedStudyId = $event.id;
-
-        } else {
-            this.selectedStudyId = null;
-
-        }
-    };
-    onChangeDoctor = ($event: any): void => {
-        console.log($event);
-        if ($event != null) {
-            this.selectedDoctorId = $event.id;
-
-        } else {
-            this.selectedDoctorId = null;
-
-        }
-    };
-    onChangeMachine = ($event: any): void => {
-        console.log($event);
-        if ($event != null) {
-            this.selectedMachineId = $event.id;
-
-        } else {
-            this.selectedMachineId = null;
-
-        }
-    };
-
-
     init(): void {
-
         this.currentUser = this.tokenStorageService.getUser();
     }
-
 
 
     saveNewStudy(): void {
 
         let datavalues;
+        let healthDataSelected;
+        let healthDataBit;
+        if (this.newHealthIns) {
+            healthDataSelected = this.health.name;
+            healthDataBit = 1;
+        } else {
+            healthDataSelected = this.selectedHealth;
+            healthDataBit = 0;
+        }
+
         if (this.newPatient) {
             datavalues = {
                 date: this.date.studyDate,
@@ -156,8 +124,9 @@ export class DashboardDoctorComponent implements OnInit {
                 name: this.studies.pname,
                 dni: this.studies.pdni,
                 lastname: this.studies.plastname,
-                healthinsurance: this.healthinsurance,
-                newPatient: 1
+                healthinsurance: healthDataSelected,
+                newPatient: 1,
+                newHealth: healthDataBit
             };
         } else {
 
@@ -168,8 +137,9 @@ export class DashboardDoctorComponent implements OnInit {
                 machine: this.selectedMachineId,
                 doctor: this.selectedDoctorId,
                 patient: this.selectedPatientsId,
-                healthinsurance: this.healthinsurance,
-                newPatient: 0
+                healthinsurance: healthDataSelected,
+                newPatient: 0,
+                newHealth: healthDataBit
             };
         }
 
@@ -184,8 +154,9 @@ export class DashboardDoctorComponent implements OnInit {
                 error => {
                     console.log(error);
                 });
-        //this.findPatient();
+        // this.findPatient();
     }
+
     addPatient() {
         this.newPatient = true;
     }
@@ -199,6 +170,59 @@ export class DashboardDoctorComponent implements OnInit {
 
     findHealth() {
         this.newHealthIns = false;
+    }
+
+
+    onChange($event) {
+
+        if ($event != null) {
+            this.selectedDNI = $event.dni;
+            this.selectedNAME = $event.name;
+            this.selectedLASTNAME = $event.lastname;
+            this.selectedPatientsId = $event.id;
+        } else {
+            this.selectedDNI = null;
+            this.selectedNAME = '';
+            this.selectedLASTNAME = '';
+            this.selectedPatientsId = null;
+        }
+    }
+    onChangeStudy($event) {
+
+        if ($event != null) {
+            this.selectedStudyId = $event.id;
+
+        } else {
+            this.selectedStudyId = null;
+
+        }
+    }
+    onChangeDoctor($event) {
+        if ($event != null) {
+            this.selectedDoctorId = $event.id;
+
+        } else {
+            this.selectedDoctorId = null;
+
+        }
+    }
+
+    onChangeMachine($event) {
+        if ($event != null) {
+            this.selectedMachineId = $event.id;
+
+        } else {
+            this.selectedMachineId = null;
+
+        }
+    }
+    onChangeHealth($event) {
+        if ($event) {
+            this.selectedHealth = $event.id;
+        }
+    }
+    onRemoveHealth() {
+        this.selectedHealth = null;
     }
 
 }
