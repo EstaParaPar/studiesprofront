@@ -8,18 +8,13 @@ const AUTH_API = environment.API_URL;
 @Injectable({
   providedIn: 'root'
 })
-export class HealthInsuranceService {
-
-  apiUrl: string = AUTH_API + '/healthInsurance';
+export class NewStudiesService {
+  apiUrl: string = AUTH_API + '/studies';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) { }
-  // Read
-  getHealthInsurance () {
-    return this.http.get(`${this.apiUrl}`);
-  }
-
   create(data): Observable<any> {
-        return this.http.post(`${this.apiUrl}` , data);
-  }
+    console.log(data);
+    return this.http.post(`${this.apiUrl}` , data);
+    }
 }

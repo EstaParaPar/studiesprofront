@@ -9,6 +9,7 @@ import { UserdataService } from '../../service/userdata.service';
 import { HealthInsuranceService } from '../../service/healthinsurance.service';
 import { PatientsService } from '../../service/patients.service';
 import { NgOption } from '@ng-select/ng-select';
+import { NewStudiesService } from '../../service/new-studies.service';
 @Component({
   templateUrl: 'dashboardDoctor.component.html',
     styleUrls: ['dashboardDoctor.component.css']
@@ -30,8 +31,17 @@ export class DashboardDoctorComponent implements OnInit {
     selectedPatientsId: number;
     selectedDNI: number;
     selectedNAME: any;
-    selectedLASTNAME: any;
-    newPatient = false;
+  selectedLASTNAME: any;
+  studies = {
+    pname:'',
+    plastname: '',
+    pdni:'',
+  }
+  date = {
+    studyDate: ''
+  }
+  newPatient = false;
+  healthinsurance = 1;
 
 
   constructor(
@@ -41,7 +51,8 @@ export class DashboardDoctorComponent implements OnInit {
       private healthInsuranceService: HealthInsuranceService,
       private patientsService:  PatientsService,
       private router: Router,
-      private tokenStorageService: TokenStorageService) { }
+      private tokenStorageService: TokenStorageService,
+      private newStudiesService: NewStudiesService) { }
 
   ngOnInit(): void {
     if (!this.tokenStorageService.isloggedin()) {
@@ -82,13 +93,45 @@ export class DashboardDoctorComponent implements OnInit {
         if ($event != null ) {
             this.selectedDNI = $event.dni;
             this.selectedNAME =  $event.name;
-            this.selectedLASTNAME =  $event.lastname;
+          this.selectedLASTNAME = $event.lastname;
+          this.selectedPatientsId = $event.id;
         } else {
             this.selectedDNI = null ;
             this.selectedNAME =  '' ;
-            this.selectedLASTNAME = '';
+          this.selectedLASTNAME = '';
+          this.selectedPatientsId = null;
         }
+  }
+  onChangeStudy = ($event: any): void => {
+    console.log($event);
+    if ($event != null ) {
+        this.selectedStudyId = $event.id;
+
+    } else {
+        this.selectedStudyId = null ;
+
     }
+  }
+  onChangeDoctor = ($event: any): void => {
+    console.log($event);
+    if ($event != null ) {
+        this.selectedDoctorId = $event.id;
+
+    } else {
+        this.selectedDoctorId = null ;
+
+    }
+  }
+  onChangeMachine = ($event: any): void => {
+    console.log($event);
+    if ($event != null ) {
+        this.selectedMachineId = $event.id;
+
+    } else {
+        this.selectedMachineId = null ;
+
+    }
+}
 
 
   init(): void {
@@ -98,7 +141,52 @@ export class DashboardDoctorComponent implements OnInit {
   addPatient() {
       this.newPatient = true;
   }
+  saveNewStudy(): void {
 
+    let datavalues 
+    if (this.newPatient) {
+      datavalues = {
+        date : this.date.studyDate,
+        study: this.selectedStudyId,
+        machine: this.selectedMachineId,
+        doctor: this.selectedDoctorId,
+        name: this.studies.pname,
+        dni: this.studies.pdni,
+        lastname: this.studies.plastname,
+        healthinsurance: this.healthinsurance,
+        newPatient: 1
+      };
+    } else {
+
+      datavalues = {
+        date : this.date.studyDate,
+        dni: this.selectedDNI,
+        study: this.selectedStudyId,
+        machine: this.selectedMachineId,
+        doctor: this.selectedDoctorId,
+        patient: this.selectedPatientsId,
+        healthinsurance: this.healthinsurance,
+        newPatient: 0
+      };
+    }
+
+    const data = datavalues;
+
+    this.newStudiesService.create(data)
+        .subscribe(
+            response => {
+                console.log(response);
+
+            },
+            error => {
+                console.log(error);
+            });
+    this.volver();
+  }
+  
+  volver() {
+    this.newPatient = false;
+  }
 
 }
 
