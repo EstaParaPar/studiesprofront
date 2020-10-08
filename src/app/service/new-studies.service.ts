@@ -16,5 +16,11 @@ export class NewStudiesService {
   create(data): Observable<any> {
     console.log(data);
     return this.http.post(`${this.apiUrl}` , data);
-    }
+  }
+  
+  getLastStudy(lastStudyId) {
+
+    const url = this.apiUrl + '/' + lastStudyId;
+    return this.http.get(`${url}`);
+}
 }

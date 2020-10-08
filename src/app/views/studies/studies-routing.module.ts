@@ -6,20 +6,30 @@ import { ConfirmStudyComponent } from './confirmStudy/confirmStudy.component';
 
 const routes: Routes = [
   {
-    path: 'newstudy',
-    component: NewStudyComponent,
+    path: '',
     data: {
-      title: 'newStudy'
-    }
-  },
-    {
-    path: 'confirmstudy',
-    component: ConfirmStudyComponent,
-    data: {
-      title: 'confirmStudy'
-    }
+      title: 'studies'
+    },
+    children: [
+      {
+        path: 'newstudy',
+        component: NewStudyComponent,
+        data: {
+          title: 'newStudy'
+        }
+      },
+      {
+        path: 'confirmstudy/:id',
+        component: ConfirmStudyComponent,
+        data: {
+          title: 'confirmStudy'
+        }
+      }
+    ]
   }
 ];
+
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

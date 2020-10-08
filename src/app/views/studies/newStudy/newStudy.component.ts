@@ -151,6 +151,7 @@ export class NewStudyComponent implements OnInit {
             .subscribe(
                 response => {
                     console.log(response);
+                    this.router.navigate(['studies/confirmstudy/', {id:response.id}])
 
                 },
                 error => {
