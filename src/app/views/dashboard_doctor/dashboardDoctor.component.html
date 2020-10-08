@@ -44,7 +44,8 @@
                                                        bindValue="id"
                                                        (change)="onChangeStudy($event)"
                                                        placeholder="Seleccionar Estudio"
-                                                       [(ngModel)]="selectedStudyId">
+                                                       (clear)="onRemoveStudy()"
+                                                       >
                                                 <ng-template ng-label-tmp let-item="item">
                                                     {{item.name}}
                                                 </ng-template>
@@ -69,7 +70,8 @@
                                                        bindValue="id"
                                                        (change)="onChangeMachine($event)"
                                                        placeholder="Seleccionar Equipo"
-                                                       [(ngModel)]="selectedMachineId">
+                                                       (clear)="onRemoveMachine()"
+                                            >
                                             </ng-select>
                                         </div>
                                     </div>
@@ -79,18 +81,17 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 ">
                                         <div class="row" style=" display: contents">
                                             <ng-select [items]="doctorArray"
-                                                       [ngStyle]="{width:'auto !important'}"
                                                        appendTo="body"
                                                        [searchable]="true"
                                                        [clearable]="true"
                                                        bindLabel="name"
                                                        (change)="onChangeDoctor($event)"
                                                        placeholder="Seleccionar Medico"
-                                                       [(ngModel)]="selectedDoctorId">
-
+                                                       (clear)="onRemoveDoctor()"
+                                                       >
                                                 <ng-template ng-label-tmp let-item="item">
                                                     {{item.name}} {{item.lastname}}
                                                 </ng-template>
@@ -101,6 +102,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
 
 
@@ -123,9 +125,9 @@
                                                    bindLabel="dni"
                                                    bindValue="id"
                                                    placeholder="Seleccionar DNI"
-                                                   [(ngModel)]="selectedPatientsId"
-
-                                                   (change)="onChange($event)">
+                                                    (clear)="onRemovePatients()"
+                                                   (change)="onChangePatients($event)"
+                                                   >
                                         </ng-select>
                                     </div>
                                     <div class="form-group row">
@@ -231,7 +233,6 @@
                                                    bindLabel="name"
                                                    bindValue="id"
                                                    placeholder="Seleccionar Obra Social"
-                                                   [(ngModel)]="health.name"
                                                    (change)="onChangeHealth($event)"
                                                    (clear)="onRemoveHealth()"
                                         >
@@ -263,12 +264,16 @@
                             </div>
                         </div>
                     </form>
+
                 </div>
 
                 <div class="card-footer">
                     <button (click)="saveNewStudy()" class="btn btn-dark"><i class="fa fa-dot-circle-o"></i> Submit
                     </button>
                     <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+                    <div class="row" *ngIf="!validform">
+                        <div class="alert-danger" >{{messageFormValid}}</div>
+                    </div>
                 </div>
             </div>
         </div>

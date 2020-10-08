@@ -34,6 +34,8 @@ export class DashboardDoctorComponent implements OnInit {
     selectedNAME: any;
     selectedLASTNAME: any;
     selectedHealth: any;
+    validform = true;
+    messageFormValid = "completar todos los campos"
 
 
     studies = {
@@ -103,7 +105,8 @@ export class DashboardDoctorComponent implements OnInit {
 
 
     saveNewStudy(): void {
-
+        this.validateform();
+        if (this.validform){
         let datavalues;
         let healthDataSelected;
         let healthDataBit;
@@ -156,7 +159,7 @@ export class DashboardDoctorComponent implements OnInit {
                 });
         // this.findPatient();
     }
-
+    }
     addPatient() {
         this.newPatient = true;
     }
@@ -173,49 +176,58 @@ export class DashboardDoctorComponent implements OnInit {
     }
 
 
-    onChange($event) {
+    onChangePatients($event) {
 
-        if ($event != null) {
+        if ($event) {
             this.selectedDNI = $event.dni;
             this.selectedNAME = $event.name;
             this.selectedLASTNAME = $event.lastname;
             this.selectedPatientsId = $event.id;
-        } else {
-            this.selectedDNI = null;
-            this.selectedNAME = '';
-            this.selectedLASTNAME = '';
-            this.selectedPatientsId = null;
-        }
+        } 
     }
-    onChangeStudy($event) {
+    onRemovePatients() {
+        this.selectedPatientsId = null;
+        this.selectedDNI = null;
+        this.selectedNAME = '';
+        this.selectedLASTNAME = '';
+    }
 
-        if ($event != null) {
+    onChangeStudy($event) {
+        if ($event) {
             this.selectedStudyId = $event.id;
 
-        } else {
+        }
+    }
+    
+    onRemoveStudy() {
             this.selectedStudyId = null;
 
         }
-    }
+    
+    
     onChangeDoctor($event) {
-        if ($event != null) {
+        if ($event) {
             this.selectedDoctorId = $event.id;
 
-        } else {
+        }
+    }
+
+    onRemoveDoctor() {
             this.selectedDoctorId = null;
 
         }
-    }
+    
 
     onChangeMachine($event) {
-        if ($event != null) {
+        if ($event) {
             this.selectedMachineId = $event.id;
-
-        } else {
-            this.selectedMachineId = null;
 
         }
     }
+        onRemoveMachine() {
+            this.selectedMachineId = null;
+
+        }
     onChangeHealth($event) {
         if ($event) {
             this.selectedHealth = $event.id;
@@ -223,6 +235,56 @@ export class DashboardDoctorComponent implements OnInit {
     }
     onRemoveHealth() {
         this.selectedHealth = null;
+    }
+
+
+    validateform() {
+        let valid = true
+        if (this.selectedHealth==null) {
+            valid = false
+        }
+        if (this.selectedMachineId == null) {
+            valid = false
+        }
+        if (this.selectedDoctorId == null) {
+            valid = false
+        }
+        if (this.selectedStudyId == null) {
+            valid = false
+        }
+        if (this.date.studyDate == null|| this.date.studyDate== "") {
+            valid = false
+        }
+        if (this.newPatient) {
+            if (this.studies.pname == null|| this.studies.pname== "") {
+                valid = false
+            }
+            if (this.studies.plastname == null || this.studies.plastname == "") {
+                valid = false
+            
+            }
+            
+            if (this.studies.pdni == null || this.studies.pdni.toString().length < 8) {
+                valid = false
+            }
+        } else {
+            if (this.selectedPatientsId == null) {
+                valid = false
+            }
+        }
+
+        if (this.newHealthIns) {
+            if (this.health.name == null || this.health.name == "") {
+            valid = false
+        } else {
+            if (this.selectedHealth == null) {
+                valid = false
+            }
+        }
+        
+        }
+            
+        this.validform=valid
     }
 
 }
