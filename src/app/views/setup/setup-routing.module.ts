@@ -38,7 +38,8 @@ const routes: Routes = [
         data: {
           title: 'healthins'
         }
-      },{
+      },
+        {
         path: 'newhealthins',
         component: NewHealthInsuranceComponent,
         data: {

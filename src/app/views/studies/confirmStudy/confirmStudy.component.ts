@@ -18,6 +18,7 @@ import { StudiesService } from '../../../service/studies.service';
 export class ConfirmStudyComponent implements OnInit {
 
     currentStudy;
+    currentUser;
 
     constructor(
         private router: Router,
@@ -25,10 +26,9 @@ export class ConfirmStudyComponent implements OnInit {
         private route: ActivatedRoute,
         private studiesService: StudiesService
     ) { }
-    
 
-        ngOnInit(): void {
-            if(!this.tokenStorageService.isloggedin()) {
+    ngOnInit(): void {
+            if (!this.tokenStorageService.isloggedin()) {
             this.router.navigate(['']);
         } else {
             this.init();
@@ -38,15 +38,18 @@ export class ConfirmStudyComponent implements OnInit {
     }
 
     init(): void {
+
+        this.currentUser = this.tokenStorageService.getUser();
         this.getStudy(this.route.snapshot.paramMap.get('id'));
-    
+
+
     }
 
     getStudy(id): void {
         this.studiesService.getStudy(id)
             .subscribe(
                 data => {
-                    this.currentStudy = data;
+                    this.currentStudy  = data;
                     console.log(data);
                 },
                 error => {

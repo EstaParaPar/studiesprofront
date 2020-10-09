@@ -70,6 +70,12 @@ export class NewStudyComponent implements OnInit {
         } else {
             this.init();
         }
+    }
+
+
+
+    init(): void {
+        this.currentUser = this.tokenStorageService.getUser();
 
         this.machinesService.getMachines().subscribe((data: any[]) => {
             // console.log(data);
@@ -94,12 +100,6 @@ export class NewStudyComponent implements OnInit {
             // console.log(data);
             this.estudiosArray = estudios;
         });
-
-
-    }
-
-    init(): void {
-        this.currentUser = this.tokenStorageService.getUser();
     }
 
 
@@ -123,6 +123,7 @@ export class NewStudyComponent implements OnInit {
                 study: this.selectedStudyId,
                 machine: this.selectedMachineId,
                 doctor: this.selectedDoctorId,
+                technician: this.currentUser.username,
                 name: this.studies.pname,
                 dni: this.studies.pdni,
                 lastname: this.studies.plastname,
@@ -138,6 +139,7 @@ export class NewStudyComponent implements OnInit {
                 study: this.selectedStudyId,
                 machine: this.selectedMachineId,
                 doctor: this.selectedDoctorId,
+                technician: this.currentUser.username,
                 patient: this.selectedPatientsId,
                 healthinsurance: healthDataSelected,
                 newPatient: 0,
@@ -151,7 +153,9 @@ export class NewStudyComponent implements OnInit {
             .subscribe(
                 response => {
                     console.log(response);
-                    this.router.navigate(['studies/confirmstudy/', {id:response.id}])
+                    const ruta = 'studies/confirmstudy/' + response.id;
+                    this.router.navigate([ruta]);
+
 
                 },
                 error => {
