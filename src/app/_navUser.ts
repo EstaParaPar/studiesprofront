@@ -1,4 +1,5 @@
 import { INavData } from '@coreui/angular';
+import {AllStudiesTechComponent} from '@views/studies/listStudiesTech/allStudies/allStudiesTech.component';
 
 export const navItemsUser: INavData[] = [
   {
@@ -12,11 +13,19 @@ export const navItemsUser: INavData[] = [
     icon: 'icon-equalizer',
     children: [
         {
-            name: 'Estudios',
+            name: 'Nuevo Estudio',
             url: '/studies/newstudy',
             icon: 'icon-screen-desktop'
         },
-    ]},/*
+        {
+            name: 'Listado Estudios',
+            icon: 'icon-screen-desktop',
+            url: '/studies/allstudiestech'
+        }
+    ]},
+
+
+    /*
   {
     name: 'Base',
     url: '/base',

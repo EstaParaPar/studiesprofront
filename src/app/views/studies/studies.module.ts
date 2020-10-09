@@ -6,6 +6,7 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 import { NewStudyComponent } from './newStudy/newStudy.component';
 import { ConfirmStudyComponent } from './confirmStudy/confirmStudy.component';
+import {  AllStudiesTechComponent } from './listStudiesTech/allStudies/allStudiesTech.component';
 import { StudiesRoutingModule } from './studies-routing.module';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { CommonModule} from '@angular/common';
@@ -22,6 +23,8 @@ import { CommonModule} from '@angular/common';
   ],
   declarations: [
       NewStudyComponent,
-      ConfirmStudyComponent]
+      ConfirmStudyComponent,
+      AllStudiesTechComponent
+  ]
 })
 export class StudiesModule { }

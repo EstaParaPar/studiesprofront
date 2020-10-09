@@ -7,14 +7,18 @@ const AUTH_API = environment.API_URL;
   providedIn: 'root'
 })
 export class StudiesService {
-  apiUrl: string = AUTH_API + '/studies';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) { }
 
   getStudy(idStudy) {
-
-    const url = this.apiUrl + '/' + idStudy;
+    const apiUrl = AUTH_API + '/studies';
+    const url = apiUrl + '/' + idStudy;
     return this.http.get(`${url}`);
+}
+  getStudiesTechnician(idTechnician) {
+      const apiUrl = AUTH_API + '/studiesTech';
+      const url = apiUrl + '/' + idTechnician;
+      return this.http.get(`${url}`);
 }
 }

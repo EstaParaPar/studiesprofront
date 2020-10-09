@@ -1,0 +1,38 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-10">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Listado de Estudios de
+        </div>
+        <div class="card-body">
+          <table  id="no-more-tables" class="table table-striped" data-show-columns="true"
+                 data-mobile-responsive="true">
+
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Nombre del Estudio</th>
+              <th>Precio</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody *ngFor="let n of dataArray;let i = index">
+            <tr>
+              <td data-title="ID">{{n.id}}</td>
+              <td data-title="Nombre"></td>
+              <td data-title="Precio">{{n.price}}</td>
+              <td data-title="State">{{n.state}}</td>
+              <td data-title="Operaciones"> <i class="fa fa-pencil-square-o fa-lg" ></i> </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+</div>
