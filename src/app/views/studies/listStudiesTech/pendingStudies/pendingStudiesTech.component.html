@@ -3,7 +3,7 @@
     <div class="col-lg-12">
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i> Listado de Estudios de
+          <i class="fa fa-align-justify"></i> Listado de Estudios Realizados
         </div>
         <div class="card-body">
           <table  id="no-more-tables" class="table table-striped" data-show-columns="true"
@@ -21,10 +21,9 @@
             </tr>
             </thead>
             <tbody *ngFor="let n of dataArray;let i = index">
-
             <tr *ngIf="n.state==1">
               <td data-title="ID">{{n.id}}</td>
-              <td data-title="Fecha">{{n.studyDate| date :'short'}}</td>
+              <td data-title="Fecha">{{n.studyDate |date:"dd-MM-yyyy"}}</td>
               <td data-title="Estudio">{{n.studieType.name}}</td>
               <td data-title="Precio">$ {{n.currentPrice}}</td>
               <td data-title="Doctor">{{n.doctor.lastname}}, {{n.doctor.name}}</td>
@@ -38,17 +37,28 @@
                 <button type="reset" class="btn btn-sm btn-success btn-block" [routerLink]="['/studies/confirmstudy/', n.id]">
                   <i class="fa fa-folder-open-o "></i> Ver
                 </button>
-                <button  *ngIf="n.state == 1" type="reset" class="btn btn-sm btn-info btn-block" [routerLink]="['/studies/confirmstudy/', n.id]">
+                <button  *ngIf="n.state == 1" type="reset" class="btn btn-sm btn-info btn-block" (click)="confirmStudy(n.id)">
                   <i class="fa fa-upload "></i> Confirmar
                 </button>
+                    <button *ngIf="n.state == 1"
+                            type="button" class="btn btn-danger btn-sm btn-block" (click)="openModal(template)">
+                        <i class="fa fa-trash-o"></i>
+                        Borrar
+                    </button>
 
-                <button  *ngIf="n.state == 1" type="reset" class="btn btn-sm btn-danger btn-block" [routerLink]="['/studies/confirmstudy/', n.id]">
-                  <i class="fa fa-trash-o "></i> Borrar
-                </button>
+                    <ng-template #template>
+                        <div class="modal-body text-center">
+                            <p>Desea borrar el estudio?</p>
+                            <button type="button" class="btn btn-danger float-left" style="width:80px; "
+                                    (click)="confirm(n.id)" > Aceptar </button>
+                            <button type="button" class="btn btn-success float-right" style="width:80px; "
+                                    (click)="decline()" > Cancelar </button>
+                        </div>
+                    </ng-template>
+
 
               </td>
             </tr>
-
             </tbody>
           </table>
         </div>

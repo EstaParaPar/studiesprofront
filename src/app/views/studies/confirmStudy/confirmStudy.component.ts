@@ -1,15 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {getStyle, hexToRgba} from '@coreui/coreui/dist/js/coreui-utilities';
-import {CustomTooltips} from '@coreui/coreui-plugin-chartjs-custom-tooltips';
+import {Component, OnInit,TemplateRef} from '@angular/core';
 import {TokenStorageService} from '../../../service/token-storage.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {MachinesService} from '../../../service/machines.service';
-import {StudiestypeService} from '../../../service/studiestype.service';
-import {UserdataService} from '../../../service/userdata.service';
-import {HealthInsuranceService} from '../../../service/healthinsurance.service';
-import {PatientsService} from '../../../service/patients.service';
-import {NgOption} from '@ng-select/ng-select';
 import { StudiesService } from '../../../service/studies.service';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal'
 
 
 @Component({
@@ -19,12 +12,14 @@ export class ConfirmStudyComponent implements OnInit {
 
     currentStudy;
     currentUser;
+    modalRef: BsModalRef;
 
     constructor(
         private router: Router,
         private tokenStorageService: TokenStorageService,
         private route: ActivatedRoute,
-        private studiesService: StudiesService
+        private studiesService: StudiesService,
+        private modalService: BsModalService
     ) { }
 
     ngOnInit(): void {
@@ -56,6 +51,45 @@ export class ConfirmStudyComponent implements OnInit {
                     console.log(error);
                 });
     }
+    confirmStudy(): void {
+        const id = this.currentStudy.id;
+        this.studiesService.confirmStudy(id)
+        .subscribe(
+            response => {
+                console.log(response);
+                this.ngOnInit();
+
+            },
+            error => {
+                console.log(error);
+            });
+    }
+    editStudy(): void{
+        const id = this.currentStudy.id;
+        const ruta = '/studies/editstudy/' + id;
+        this.router.navigate([ruta]);
+    }
+
+    openModal(template:TemplateRef<any>) {
+        this.modalRef = this.modalService.show(template,{class:'modal-sm'})
+    }
+
+    confirm(): void{
+        this.modalRef.hide();
+            const id = this.currentStudy.id;
+            this.studiesService.deleteStudy(id)
+            .subscribe(
+                response => {
+                    console.log(response);
+                    this.router.navigate(['/studies/allstudiestech']);
+    
+                },
+                error => {
+                    console.log(error);
+                });
+    }
+
+    decline(): void{
+        this.modalRef.hide();
+    }
 }
-
-

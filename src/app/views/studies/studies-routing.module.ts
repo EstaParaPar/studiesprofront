@@ -4,6 +4,7 @@ import { NewStudyComponent } from './newStudy/newStudy.component';
 import { ConfirmStudyComponent } from './confirmStudy/confirmStudy.component';
 import {  AllStudiesTechComponent } from './listStudiesTech/allStudies/allStudiesTech.component';
 import {  PendingStudiesTechComponent } from './listStudiesTech/pendingStudies/pendingStudiesTech.component';
+import { EditStudyComponent } from './editstudy/editStudy.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,13 @@ const routes: Routes = [
         component: ConfirmStudyComponent,
         data: {
           title: 'confirmStudy'
+        }
+      },
+      {
+        path: 'editstudy/:id',
+        component: EditStudyComponent,
+        data: {
+          title: 'editStudy'
         }
       },
         {

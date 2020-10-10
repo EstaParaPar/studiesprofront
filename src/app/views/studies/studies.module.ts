@@ -11,6 +11,8 @@ import {  PendingStudiesTechComponent } from './listStudiesTech/pendingStudies/p
 import { StudiesRoutingModule } from './studies-routing.module';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { CommonModule} from '@angular/common';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { EditStudyComponent } from './editstudy/editStudy.component';
 
 @NgModule({
   imports: [
@@ -20,13 +22,15 @@ import { CommonModule} from '@angular/common';
     StudiesRoutingModule,
     ChartsModule,
     BsDropdownModule,
+    ModalModule.forRoot(),
     ButtonsModule.forRoot()
   ],
   declarations: [
       NewStudyComponent,
       ConfirmStudyComponent,
       AllStudiesTechComponent,
-      PendingStudiesTechComponent
+    PendingStudiesTechComponent,
+      EditStudyComponent
   ]
 })
 export class StudiesModule { }

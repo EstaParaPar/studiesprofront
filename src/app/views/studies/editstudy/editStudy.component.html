@@ -1,0 +1,291 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Modificar estudio realizado</strong>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-md-12 col-form-label">
+                                        <b>Usuario</b>
+                                    </label>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <p class="form-control-static">{{currentUser.username}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-12 col-form-label" for="date-input">
+                                        <b>Fecha</b>
+                                    </label>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <input class="form-control" id="date-input" type="date" name="date-input"
+                                               placeholder="date" [(ngModel)]="date.studyDate">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-12 col-form-label" for="date-input"><b>Estudio</b></label>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <div id="selectStudy" class="row" style=" display: contents">
+                                            <ng-select id="selectStudy" [items]="estudiosArray"
+                                                       [searchable]="true"
+                                                       [clearable]="true"
+                                                       bindLabel="name"
+                                                       bindValue="id"
+                                                       (change)="onChangeStudy($event)"
+                                                       placeholder="Seleccionar Estudio"
+                                                       (clear)="onRemoveStudy()"
+                                                       [(ngModel)]="selectedStudyId"
+                                                       [ngModelOptions]="{standalone:true}"
+                                                       >
+                                                <ng-template ng-label-tmp let-item="item">
+                                                    {{item.name}}
+                                                </ng-template>
+                                                <ng-template ng-option-tmp let-item="item" let-index="index">
+                                                    <i class="fa fa-tag "></i>
+                                                    {{item.name}}
+                                                </ng-template>
+
+                                            </ng-select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-12 col-form-label" for="date-input"><b>Equipo</b></label>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <div class="row" style=" display: contents">
+                                            <ng-select [items]="machineArray"
+                                                       bindLabel="name"
+                                                       bindValue="id"
+                                                       (change)="onChangeMachine($event)"
+                                                       placeholder="Seleccionar Equipo"
+                                                       (clear)="onRemoveMachine()"
+                                                       [(ngModel)]="selectedMachineId"
+                                                       [ngModelOptions]="{standalone:true}"
+                                            >
+                                            </ng-select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-12 col-form-label" for="date-input"><b>Medico</b></label>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-12 ">
+                                        <div class="row" style=" display: contents">
+                                            <ng-select [items]="doctorArray"
+                                                       appendTo="body"
+                                                       [searchable]="true"
+                                                       [clearable]="true"
+                                                       bindValue="id"
+                                                       bindLabel="name"
+                                                       (change)="onChangeDoctor($event)"
+                                                       placeholder="Seleccionar Medico"
+                                                       (clear)="onRemoveDoctor()"
+                                                       [(ngModel)]="selectedDoctorId"
+                                                       [ngModelOptions]="{standalone:true}"
+                                                       >
+                                                <ng-template ng-label-tmp let-item="item">
+                                                    {{item.name}} {{item.lastname}}
+                                                </ng-template>
+                                                <ng-template ng-option-tmp let-item="item" let-index="index">
+                                                    {{item.name}} {{item.lastname}}
+                                                </ng-template>
+                                            </ng-select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="col-md-6">
+                                <div *ngIf="!newPatient">
+                                    <div class="form-group row">
+                                        <label class="col-md-6 col-form-label" for="date-input">
+                                            <b>Buscar Paciente</b>
+                                        </label>
+                                        <div class="col-md-6">
+                                            <button class="btn btn-primary btn-sm float-right"
+                                                    type="button" (click)="addPatient()">
+                                                <i class="fa fa-user-plus fa-lg"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row" style=" display: contents">
+                                        <ng-select [items]="patients"
+                                                   bindLabel="dni"
+                                                   bindValue="id"
+                                                   placeholder="Seleccionar DNI"
+                                                    (clear)="onRemovePatients()"
+                                                   (change)="onChangePatients($event)"
+                                                   [(ngModel)]="selectedPatientsId"
+                                                   [ngModelOptions]="{standalone:true}"
+                                                   >
+                                        </ng-select>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-12 col-form-label"><b>DNI</b></label>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-6 ">
+                                            {{selectedDNI}}
+                                        </label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-md-6 col-form-label"><b>Nombre</b></label>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-6 ">{{selectedNAME}}</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-md-6 col-form-label"><b>Apellido</b></label>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-6 ">{{selectedLASTNAME}}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+                                <div *ngIf="newPatient">
+                                    <div class="row">
+                                        <label class="col-md-6 col-form-label" for="date-input">
+                                            <b>Nuevo Paciente</b>
+                                        </label>
+                                        <div class="col-md-6">
+                                            <button id="no-label" class="btn btn-primary btn-sm float-right"
+                                                    type="button" (click)="findPatient()">
+                                                <i class="fa fa-mail-forward"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col md-12">
+                                            <label><b>DNI</b></label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col md-12 form-group submit-form">
+                                            <input type="number" name="dni" class="form-control" placeholder="DNI.."
+                                                   [(ngModel)]="studies.pdni"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="col md-12 form-group submit-form">
+                                                    <label class="col-form-label"><b>Nombre</b></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col md-12 form-group submit-form">
+                                                    <input type="text" name="name" class="form-control" placeholder="Nombre"
+                                                           [(ngModel)]="studies.pname"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="col md-12 form-group submit-form">
+                                                    <label class="col-form-label"><b>Apellido</b></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col md-12 form-group submit-form">
+                                                    <input type="text" name="lastname" class="form-control"
+                                                           placeholder="Apellido" [(ngModel)]="studies.plastname"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+
+
+                                <div *ngIf="!newHealthIns">
+                                    <div class="form-group row">
+                                        <label class="col-md-8 col-form-label" for="date-input"><b> Obra Social </b></label>
+                                        <div class="col-md-4">
+                                            <button class="btn btn-primary btn-sm float-right"
+                                                    type="button" (click)="addHealth()">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row" style=" display: contents">
+                                        <ng-select [items]="dataHealthIn"
+                                                   bindLabel="name"
+                                                   bindValue="id"
+                                                   placeholder="Seleccionar Obra Social"
+                                                   (change)="onChangeHealth($event)"
+                                                   (clear)="onRemoveHealth()"
+                                                   [(ngModel)]="selectedHealth"
+                                                   [ngModelOptions]="{standalone:true}"
+                                        >
+                                        </ng-select>
+                                    </div>
+                                </div>
+                                <div *ngIf="newHealthIns">
+                                    <div class="row">
+                                        <label class="col-md-8 col-form-label" for="date-input">
+                                            <b>Nueva Obra Social </b>
+                                        </label>
+                                        <div class="col-md-4">
+                                            <button class="btn btn-primary btn-sm float-right"
+                                                    type="button" (click)="findHealth()">
+                                                <i class="fa fa-mail-forward"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class=" row">
+                                        <div class="col md-12 form-group submit-form">
+                                            <input type="text" name="health" class="form-control" placeholder="Obra Social"
+                                                   [(ngModel)]="health.name"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+                <div class="card-footer">
+                    <button (click)="saveNewStudy()" class="btn btn-success float-right"> Cargar
+                    </button>
+                    <div class="row" *ngIf="!validform">
+                        <div class="alert-danger" >{{messageFormValid}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
