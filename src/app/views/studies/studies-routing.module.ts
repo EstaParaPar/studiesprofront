@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NewStudyComponent } from './newStudy/newStudy.component';
 import { ConfirmStudyComponent } from './confirmStudy/confirmStudy.component';
 import {  AllStudiesTechComponent } from './listStudiesTech/allStudies/allStudiesTech.component';
+import {  PendingStudiesTechComponent } from './listStudiesTech/pendingStudies/pendingStudiesTech.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,13 @@ const routes: Routes = [
         component: AllStudiesTechComponent,
         data: {
           title: 'liststudies'
+        }
+      },
+        {
+        path: 'pendingstudiestech',
+        component: PendingStudiesTechComponent,
+        data: {
+          title: 'studiespending'
         }
       }
     ]

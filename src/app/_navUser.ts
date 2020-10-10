@@ -4,23 +4,28 @@ import {AllStudiesTechComponent} from '@views/studies/listStudiesTech/allStudies
 export const navItemsUser: INavData[] = [
   {
     name: 'Dashboard',
-    url: '/dashboard',
+    url: '/dash_tecnico',
     icon: 'icon-speedometer'
   },
    {
     name: 'Estudios',
     url: '/studies',
-    icon: 'icon-equalizer',
+    icon: 'icon-docs',
     children: [
         {
             name: 'Nuevo Estudio',
             url: '/studies/newstudy',
-            icon: 'icon-screen-desktop'
+            icon: 'icon-plus'
         },
         {
-            name: 'Listado Estudios',
-            icon: 'icon-screen-desktop',
+            name:  'Estudios',
+            icon: 'icon-list',
             url: '/studies/allstudiestech'
+        },
+        {
+            name: 'Estudios Pendientes',
+            icon: 'icon-list',
+            url: '/studies/pendingstudiestech'
         }
     ]},
 

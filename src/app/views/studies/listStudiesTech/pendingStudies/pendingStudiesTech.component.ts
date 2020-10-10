@@ -4,10 +4,10 @@ import { Router } from '@angular/router';
 import {TokenStorageService} from '../../../../service/token-storage.service';
 
 @Component({
-    templateUrl: 'allStudiesTech.component.html',
-    styleUrls: ['allStudiesTech.component.css']
+    templateUrl: 'pendingStudiesTech.component.html',
+    styleUrls: ['pendingStudiesTech.component.css']
 })
-export class AllStudiesTechComponent  implements OnInit {
+export class PendingStudiesTechComponent  implements OnInit {
     dataArray = [];
     currentUser: any;
 

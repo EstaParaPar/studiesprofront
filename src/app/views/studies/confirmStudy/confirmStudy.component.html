@@ -3,7 +3,10 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <strong>Agregar estudio realizado</strong>
+                    <strong>Detalle Estudio realizado</strong>
+
+                    <span *ngIf="currentStudy.state==2" class="badge badge-info float-right">Confirmado</span>
+
                 </div>
                 <div class="card-body">
                     <form>
@@ -141,9 +144,15 @@
                 </div>
 
                 <div class="card-footer">
-                    <button  class="btn btn-dark"><i class="fa fa-dot-circle-o"></i> Submit
+                    <button   *ngIf="currentStudy.state == 1"
+                              class="btn btn-danger"><i class="fa fa-trash-o"></i>
+                        Borrar
                     </button>
-                    <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Confirmar </button>
+                    <button   *ngIf="currentStudy.state == 1"
+                              class="btn btn-info float-right"><i class="fa fa-upload"></i>
+                        Confirmar
+                    </button>
+
 
                 </div>
             </div>

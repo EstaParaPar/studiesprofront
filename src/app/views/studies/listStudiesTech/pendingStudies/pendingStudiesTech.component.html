@@ -21,7 +21,8 @@
             </tr>
             </thead>
             <tbody *ngFor="let n of dataArray;let i = index">
-            <tr>
+
+            <tr *ngIf="n.state==1">
               <td data-title="ID">{{n.id}}</td>
               <td data-title="Fecha">{{n.studyDate| date :'short'}}</td>
               <td data-title="Estudio">{{n.studieType.name}}</td>
@@ -41,9 +42,13 @@
                   <i class="fa fa-upload "></i> Confirmar
                 </button>
 
+                <button  *ngIf="n.state == 1" type="reset" class="btn btn-sm btn-danger btn-block" [routerLink]="['/studies/confirmstudy/', n.id]">
+                  <i class="fa fa-trash-o "></i> Borrar
+                </button>
 
               </td>
             </tr>
+
             </tbody>
           </table>
         </div>

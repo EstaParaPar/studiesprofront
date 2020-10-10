@@ -12,17 +12,22 @@
             <thead>
             <tr>
               <th>#</th>
-              <th>Nombre del Estudio</th>
+              <th>Fecha</th>
+              <th>Estudio</th>
               <th>Precio</th>
+              <th>Doctor</th>
+              <th>Estado</th>
               <th></th>
             </tr>
             </thead>
             <tbody *ngFor="let n of dataArray;let i = index">
             <tr>
               <td data-title="ID">{{n.id}}</td>
-              <td data-title="Nombre"></td>
-              <td data-title="Precio">{{n.price}}</td>
-              <td data-title="State">{{n.state}}</td>
+              <td data-title="Fecha">{{n.id}}</td>
+              <td data-title="Estudio">{{n.studieType.name}}</td>
+              <td data-title="Precio">{{n.currentPrice}}</td>
+              <td data-title="Doctor">{{n.doctor.lastname}}, {{n.doctor.name}}</td>
+              <td data-title="Estado">{{n.state}}</td>
               <td data-title="Operaciones"> <i class="fa fa-pencil-square-o fa-lg" ></i> </td>
             </tr>
             </tbody>

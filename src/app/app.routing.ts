@@ -9,8 +9,7 @@ import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { LogoutComponent } from './views/login/logout.component';
 import { RegisterComponent } from './views/register/register.component';
-import { HomeComponent } from './views/home/home.component';
-import { ProfileComponent } from './views/profile/profile.component';
+
 
 
 export const routes: Routes = [
@@ -26,7 +25,7 @@ export const routes: Routes = [
   },
   {
     path: 'dash_tecnico',
-    redirectTo: 'dashboard',
+    redirectTo: 'dashboardUser',
     pathMatch: 'full',
   },
   {
@@ -100,6 +99,10 @@ export const routes: Routes = [
       {
         path: 'dashboardDoctor',
         loadChildren: () => import('./views/dashboard_doctor/dashboardDoctor.module').then(m => m.DashboardDoctorModule)
+      },
+        {
+        path: 'dashboardUser',
+        loadChildren: () => import('./views/dashboard_user/dashboardUser.module').then(m => m.DashboardUserModule)
       },
       {
         path: 'icons',
