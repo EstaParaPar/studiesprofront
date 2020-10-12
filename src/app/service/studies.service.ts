@@ -25,12 +25,18 @@ export class StudiesService {
   confirmStudy(idStudy): Observable<any> {
     const apiUrl = AUTH_API + '/confirmStudy';
     const url = apiUrl + '/' + idStudy;
-    return this.http.patch(`${url}`,null);
+    return this.http.patch(`${url}`, null);
   }
 
   deleteStudy(idStudy): Observable<any> {
     const apiUrl = AUTH_API + '/deleteStudy';
     const url = apiUrl + '/' + idStudy;
-    return this.http.patch(`${url}`,null);
+    return this.http.patch(`${url}`, null);
+  }
+
+  getdashTech(idTech): Observable<any> {
+    const apiUrl = AUTH_API + '/dashTech';
+    const url = apiUrl + '/' + idTech;
+    return this.http.get(`${url}`);
   }
 }

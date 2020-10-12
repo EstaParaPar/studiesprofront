@@ -159,13 +159,18 @@
                                     (click)="decline()" > Cancelar </button>
                         </div>
                     </ng-template>
-                    <button   *ngIf="currentStudy.state == 1"
-                              class="btn btn-success float-right"(click)="editStudy()"><i class="fa fa-pencil" ></i>
-                        Modificar
-                    </button>
+
                     <button   *ngIf="currentStudy.state == 1"
                               class="btn btn-info float-right"(click)="confirmStudy()"><i class="fa fa-upload" ></i>
                         Confirmar
+                    </button>
+
+                    <button   *ngIf="currentStudy.state == 1"
+                              class="btn btn-success float-right "(click)="editStudy()"
+                              style="margin-right: 10px"
+                    >
+                        <i class="fa fa-pencil" ></i>
+                        Modificar
                     </button>
 
 

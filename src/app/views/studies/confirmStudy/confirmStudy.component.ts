@@ -45,7 +45,14 @@ export class ConfirmStudyComponent implements OnInit {
             .subscribe(
                 data => {
                     this.currentStudy  = data;
-                    console.log(data);
+                    if (this.currentStudy) {
+                        if (this.currentStudy.technician.id !== this.currentUser.userId) {
+                            this.router.navigate(['']);
+                        }
+                        console.log(data);
+                    } else {
+                        this.router.navigate(['']);
+                    }
                 },
                 error => {
                     console.log(error);

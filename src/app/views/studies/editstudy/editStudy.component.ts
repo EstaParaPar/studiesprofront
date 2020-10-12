@@ -28,7 +28,7 @@ export class EditStudyComponent implements OnInit {
     currentUser: any;
     patients = [];
     currentStudy;
-
+    currentId;
 
     selectedPatientsId: number;
     selectedDNI: number;
@@ -80,7 +80,8 @@ export class EditStudyComponent implements OnInit {
 
     init(): void {
         this.currentUser = this.tokenStorageService.getUser();
-        this.getStudy(this.route.snapshot.paramMap.get('id'));
+        this.currentId = this.route.snapshot.paramMap.get('id');
+        this.getStudy(this.currentId);
 
         this.machinesService.getMachines().subscribe((data: any[]) => {
             // console.log(data);
@@ -114,20 +115,31 @@ export class EditStudyComponent implements OnInit {
     "idHealthInsurance": { "name": "galeno" },
     "idPatients": { "name": "borja", "lastname": "valero", "dni": 25652369 }*/
 
+    getDate(date): string {
+        return date.substring(0, 10);
+
+    }
     getStudy(id): void {
         this.studiesService.getStudy(id).subscribe(
                 data => {
                 this.currentStudy = data;
-                //this.date.studyDate = this.currentStudy.studydate;
-                this.selectedStudyId = this.currentStudy.studieType.id;
-                this.selectedPatientsId = this.currentStudy.idPatients.id;
-                this.selectedDoctorId = this.currentStudy.doctor.id;
-                this.selectedHealth = this.currentStudy.idHealthInsurance.id;
-                this.selectedMachineId = this.currentStudy.machine.id;
-                this.selectedDNI =this.currentStudy.idPatients.dni;
-                this.selectedNAME = this.currentStudy.idPatients.name;
-                this.selectedLASTNAME = this.currentStudy.idPatients.lastname;
-                
+                if (this.currentStudy) {
+                     if (this.currentStudy.state !== 1 || this.currentStudy.technician.id !== this.currentUser.userId) {
+                            this.router.navigate(['']);
+                    } else {
+                        this.date.studyDate = this.getDate(this.currentStudy.studyDate);
+                        this.selectedStudyId = this.currentStudy.studieType.id;
+                        this.selectedPatientsId = this.currentStudy.idPatients.id;
+                        this.selectedDoctorId = this.currentStudy.doctor.id;
+                        this.selectedHealth = this.currentStudy.idHealthInsurance.id;
+                        this.selectedMachineId = this.currentStudy.machine.id;
+                        this.selectedDNI = this.currentStudy.idPatients.dni;
+                        this.selectedNAME = this.currentStudy.idPatients.name;
+                        this.selectedLASTNAME = this.currentStudy.idPatients.lastname;
+                    }
+                } else {
+                    this.router.navigate(['']);
+                }
                 },
                 error => {
                     console.log(error);
@@ -135,7 +147,7 @@ export class EditStudyComponent implements OnInit {
     }
 
 
-    saveNewStudy(): void {
+    saveStudy(): void {
         this.validateform();
         if (this.validform) {
         let datavalues;
@@ -181,7 +193,7 @@ export class EditStudyComponent implements OnInit {
 
         const data = datavalues;
 
-        this.newStudiesService.create(data)
+        this.newStudiesService.update(this.currentId, data)
             .subscribe(
                 response => {
                     console.log(response);

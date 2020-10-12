@@ -17,6 +17,9 @@ export class NewStudiesService {
     console.log(data);
     return this.http.post(`${this.apiUrl}` , data);
   }
+  update(id, data): Observable<any> {
+        return this.http.patch(`${this.apiUrl}/${id}`, data);
+  }
   
   getLastStudy(lastStudyId) {
 
