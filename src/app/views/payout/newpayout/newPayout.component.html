@@ -1,0 +1,56 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Seleccionar técnico para liquidación</strong>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-md-12 col-form-label" for="date-input"><b>Técnico</b></label>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-12 ">
+                                        <div class="row" style=" display: contents">
+                                            <ng-select [items]="techArray"
+                                                       appendTo="body"
+                                                       [searchable]="true"
+                                                       [clearable]="true"
+                                                       bindLabel="name"
+                                                       (change)="onChangeTech($event)"
+                                                       placeholder="Seleccionar Tecnico"
+                                                       (clear)="onRemoveTech()"
+                                                       >
+                                                <ng-template ng-label-tmp let-item="item">
+                                                    {{item.name}} {{item.lastname}}
+                                                </ng-template>
+                                                <ng-template ng-option-tmp let-item="item" let-index="index">
+                                                    {{item.name}} {{item.lastname}}
+                                                </ng-template>
+                                            </ng-select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+                <div class="card-footer">
+                    <button (click)="NewPayoutStudies()" class="btn btn-success float-right"> Buscar
+                    </button>
+                    <div class="row" *ngIf="!validform">
+                        <div class="alert-danger" >{{messageFormValid}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

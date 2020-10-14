@@ -85,6 +85,10 @@ export const routes: Routes = [
         loadChildren: () => import('./views/setup/setup.module').then(m => m.SetupModule)
       },
       {
+        path: 'payout',
+        loadChildren: () => import('./views/payout/payout.module').then(m => m.PayoutModule)
+      },
+      {
         path: 'buttons',
         loadChildren: () => import('./views/buttons/buttons.module').then(m => m.ButtonsModule)
       },

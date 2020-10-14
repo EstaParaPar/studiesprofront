@@ -39,4 +39,19 @@ export class StudiesService {
     const url = apiUrl + '/' + idTech;
     return this.http.get(`${url}`);
   }
+  getStudiesDoctorTech(idDoctor, body): Observable<any> {
+    const apiUrl = AUTH_API + '/studiesdoctortech';
+    const url = apiUrl + '/' + idDoctor ;
+    return this.http.get(`${url}`, body);
+    }
+  confirmStudiesPayout(body): Observable<any> {
+    const apiUrl = AUTH_API + '/confirmedStudiesPayout';
+    const url = apiUrl + '/';
+    return this.http.post(`${url}`, body);
+  }
+  getPayoutList(idDoctor, body): Observable<any> {
+    const apiUrl = AUTH_API + '/payoutListDoctor';
+    const url = apiUrl + '/' + idDoctor ;
+    return this.http.get(`${url}`, body);
+  }
 }

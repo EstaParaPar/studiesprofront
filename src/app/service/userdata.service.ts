@@ -16,6 +16,7 @@ export class UserdataService {
 
   apiUrl: string = AUTH_API + '/users';
   apiUrlDoctor: string = AUTH_API + '/doctors';
+  apiUrlTechs: string = AUTH_API + '/techs';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient, private TokenStorageService : TokenStorageService) { }
@@ -31,4 +32,8 @@ export class UserdataService {
         return this.http.get(`${this.apiUrlDoctor}`);
 
     }
+    getTechs() {
+      return this.http.get(`${this.apiUrlTechs}`);
+
+  }
 }

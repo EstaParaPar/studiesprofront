@@ -13,6 +13,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { CommonModule} from '@angular/common';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { EditStudyComponent } from './editstudy/editStudy.component';
+import { AllStudiesPayoutComponent } from './listStudiesDoctor/payout/allStudiesPayout.component';
 
 @NgModule({
   imports: [
@@ -29,8 +30,9 @@ import { EditStudyComponent } from './editstudy/editStudy.component';
       NewStudyComponent,
       ConfirmStudyComponent,
       AllStudiesTechComponent,
-    PendingStudiesTechComponent,
-      EditStudyComponent
+      PendingStudiesTechComponent,
+      EditStudyComponent,
+      AllStudiesPayoutComponent
   ]
 })
 export class StudiesModule { }

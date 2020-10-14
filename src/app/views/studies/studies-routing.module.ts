@@ -5,6 +5,7 @@ import { ConfirmStudyComponent } from './confirmStudy/confirmStudy.component';
 import {  AllStudiesTechComponent } from './listStudiesTech/allStudies/allStudiesTech.component';
 import {  PendingStudiesTechComponent } from './listStudiesTech/pendingStudies/pendingStudiesTech.component';
 import { EditStudyComponent } from './editstudy/editStudy.component';
+import { AllStudiesPayoutComponent }  from './listStudiesDoctor/payout/allStudiesPayout.component'
 
 
 const routes: Routes = [
@@ -43,11 +44,19 @@ const routes: Routes = [
         }
       },
         {
+          path: 'allstudiespayout/:id',
+          component: AllStudiesPayoutComponent,
+          data: {
+            title: 'allstudiespayout'
+          }
+      },
+        {
         path: 'pendingstudiestech',
         component: PendingStudiesTechComponent,
         data: {
           title: 'studiespending'
         }
+
       }
     ]
   }

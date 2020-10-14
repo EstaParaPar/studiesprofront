@@ -8,7 +8,24 @@ export const navItemsDoctor: INavData[] = [
     },
     {
         title: true,
-        name: 'Estudios'
+        name: 'Liquidaciones',
+    },
+    { 
+        name:'Liquidaciones',
+        url:'/payout',
+        icon: 'icon-equalizer',
+        children: [
+            {
+                name: 'Nueva liquidacion',
+                url: '/payout/newPayout',
+                icon: 'icon-credit-card'
+            },
+            {
+                name: 'liquidados',
+                url: '/payout/finishedpayouts',
+                icon: 'icon-docs'
+            },
+        ]
     },
     {
         title: true,
