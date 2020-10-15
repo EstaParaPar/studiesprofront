@@ -10,16 +10,20 @@
             <thead>
               <tr>
                 <th>#</th>
-                <th>Nombre del Estudio</th>
-                <th>Precio</th>
+                <th>Usuario</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Rol</th>
                 <th></th>
               </tr>
             </thead>
             <tbody *ngFor="let n of dataArray;let i = index">
               <tr>
                 <td>{{n.id}}</td>
+                <td>{{n.username}}</td>
                 <td>{{n.name}}</td>
                 <td>{{n.lastname}}</td>
+                <td>{{n.role}}</td>
                 <td> </td>
               </tr>
             </tbody>
