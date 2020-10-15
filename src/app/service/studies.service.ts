@@ -39,6 +39,12 @@ export class StudiesService {
     const url = apiUrl + '/' + idTech;
     return this.http.get(`${url}`);
   }
+
+  getdashDoctor(idTech): Observable<any> {
+        const apiUrl = AUTH_API + '/dashDoctor';
+        const url = apiUrl + '/' + idTech;
+        return this.http.get(`${url}`);
+  }
   getStudiesDoctorTech(idDoctor, body): Observable<any> {
     const apiUrl = AUTH_API + '/studiesdoctortech';
     const url = apiUrl + '/' + idDoctor ;
