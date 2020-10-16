@@ -3,7 +3,7 @@ import { INavData } from '@coreui/angular';
 export const navItemsDoctor: INavData[] = [
     {
         name: 'Dashboard',
-        url: '/dashboard',
+        url: '/dashboardDoctor',
         icon: 'icon-speedometer'
     },
     {
@@ -22,7 +22,7 @@ export const navItemsDoctor: INavData[] = [
             },
             {
                 name: 'liquidados',
-                url: '/payout/finishedpayouts',
+                url: '/payout/confirmedPayout',
                 icon: 'icon-docs'
             },
         ]

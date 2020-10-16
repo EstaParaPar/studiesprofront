@@ -3,7 +3,7 @@
     <div class="col-lg-12">
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i> Listado de Estudios de
+          <i class="fa fa-align-justify"></i> Listado de liquidaciones
         </div>
         <div class="card-body">
           <table  id="no-more-tables" class="table table-striped" data-show-columns="true"
@@ -13,32 +13,22 @@
             <tr>
               <th>#</th>
               <th>Fecha</th>
-              <th>Estudio</th>
+              <th>Tecnico</th>
               <th>Precio</th>
               <th>Doctor</th>
-              <th>Estado</th>
               <th></th>
             </tr>
             </thead>
             <tbody *ngFor="let n of dataArray;let i = index">
             <tr>
               <td data-title="ID">{{n.id}}</td>
-              <td data-title="Fecha">{{n.studyDate| date :'short'}}</td>
-              <td data-title="Estudio">{{n.studieType.name}}</td>
-              <td data-title="Precio">$ {{n.currentPrice}}</td>
+              <td data-title="Fecha">{{n.createAT| date :'short'}}</td>
+              <td data-title="Tecnico">{{n.technician.name}}{{n.technician.lastname}}</td>
+              <td data-title="Precio">$ {{n.totalPrice}}</td>
               <td data-title="Doctor">{{n.doctor.lastname}}, {{n.doctor.name}}</td>
-              <td data-title="Estado">
-                <span *ngIf="n.state==1" class="badge badge-warning">Pendiente</span>
-                <span *ngIf="n.state==2" class="badge badge-info">Confirmado</span>
-                <span *ngIf="n.state==3" class="badge badge-info">Finalizado</span>
-
-              </td>
               <td data-title="Operaciones">
-                <button type="reset" class="btn btn-sm btn-success btn-block" [routerLink]="['/studies/confirmstudy/', n.id]">
+                <button type="reset" class="btn btn-sm btn-success btn-block" [routerLink]="['/payout/detailPayout/', n.id]">
                   <i class="fa fa-folder-open-o "></i> Ver
-                </button>
-                <button  *ngIf="n.state == 1" type="reset" class="btn btn-sm btn-info btn-block" [routerLink]="['/studies/confirmstudy/', n.id]">
-                  <i class="fa fa-upload "></i> Confirmar
                 </button>
 
 

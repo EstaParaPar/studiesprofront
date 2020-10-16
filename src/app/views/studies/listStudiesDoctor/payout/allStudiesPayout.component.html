@@ -21,7 +21,7 @@
             <tbody >
             <tr *ngFor="let n of dataArray;let i = index; let odd = odd" [ngClass]="odd ? 'odd_col' : 'even_col'">
               <td data-title="ID">{{n.id}}</td>
-              <td data-title="Fecha">{{n.studyDate|date:"dd-MM-yyyy"}}</td>
+              <td data-title="Fecha">{{n.payout|date:"dd-MM-yyyy"}}</td>
               <td data-title="Estudio">{{n.studieType.name}}</td>
               <td data-title="Tecnico">{{n.technician.lastname}}, {{n.technician.name}}</td>
               <td data-title="Precio">$ {{n.currentPrice}}</td> 
@@ -43,7 +43,7 @@
         <div class="card-footer">
           <button *ngIf="dataArray.length"
           type="reset" class="btn btn-sm btn-info float-right"
-                  (click)="confirmStudiesPayout(body)">
+                  (click)="confirmStudiesPayout(body)" [routerLink]="'/payout/confirmedPayoutList/'">
             <i class="fa fa-upload "></i> Confirmar</button>
 
           <ng-template #elseBlock> No hay estudios para liquidar</ng-template>

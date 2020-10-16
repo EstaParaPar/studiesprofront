@@ -7,7 +7,7 @@ import {TokenStorageService} from '../../../service/token-storage.service';
     templateUrl: 'confirmedPayoutList.component.html',
     styleUrls: ['confirmedPayoutList.component.css']
 })
-export class confirmedPayoutListComponent  implements OnInit {
+export class ConfirmedPayoutListComponent  implements OnInit {
     dataArray = [];
     currentUser: any;
 
@@ -26,11 +26,14 @@ export class confirmedPayoutListComponent  implements OnInit {
         }
     }
     init() {
+      console.log  ("init de GetListPayout");
       this.currentUser = this.tokenStorageService.getUser();
-      this.studiesService.getPayoutList(this.currentUser.userId, this.dataArray).subscribe((data: any[]) => {
-        console.log(data);
-        this.dataArray = data;
-      });
+
+      this.studiesService.getPayoutList(this.currentUser.userId).subscribe((data: any[]) => {
+      console.log(data);
+      console.log("creando listado");
+      this.dataArray = data;
+    });
     }
 
 }

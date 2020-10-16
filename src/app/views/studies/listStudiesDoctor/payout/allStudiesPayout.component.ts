@@ -119,12 +119,12 @@ export class AllStudiesPayoutComponent  implements OnInit {
         this.studiesService.confirmStudiesPayout(payoutData)
         .subscribe(
             response => {
-                console.log(response);
-                const ruta = 'payout/confirmedstudiespayout/' + response.id;
-                this.router.navigate([ruta]);
+              console.log(response);
+              const ruta = 'payout/confirmedPayout/';
+              this.router.navigate([ruta]);
             },
             error => {
-                console.log(error);
+              console.log(error);
             });
     }
 

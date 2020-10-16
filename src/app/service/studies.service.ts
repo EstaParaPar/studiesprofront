@@ -55,9 +55,15 @@ export class StudiesService {
     const url = apiUrl + '/';
     return this.http.post(`${url}`, body);
   }
-  getPayoutList(idDoctor, body): Observable<any> {
-    const apiUrl = AUTH_API + '/payoutListDoctor';
+  getPayoutList(idDoctor): Observable<any> {
+    const apiUrl = AUTH_API + '/confirmedStudiesPayout';
     const url = apiUrl + '/' + idDoctor ;
-    return this.http.get(`${url}`, body);
+    return this.http.get(`${url}`);
   }
+  getDetailPayout(idPayout): Observable<any> {
+    const apiUrl = AUTH_API + '/detailPayout';
+    const url = apiUrl + '/' + idPayout;
+    return this.http.get(`${url}`);
+  }
+
 }

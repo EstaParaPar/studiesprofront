@@ -1,0 +1,76 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Detalle de liquidacion</strong>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-md-12 col-form-label">
+                                        <b>Doctor</b>
+                                    </label>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <p class="form-control-static">
+                                            {{currentUser.username}}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-12 col-form-label" >
+                                        <b>Tecnico</b>
+                                    </label>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                       {{currentPayout.technician.name}}, {{currentPayout.technician.lastname}}
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-12 col-form-label" >
+                                        <b>Total liquidación</b>
+                                    </label>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        ${{currentPayout.totalPrice}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <table  id="no-more-tables" class="table table-striped" data-show-columns="true"
+                    data-mobile-responsive="true">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Fecha</th>
+                            <th>Estudio</th>
+                            <th>Precio</th>
+                            <th>Paciente</th>
+                            <th>OS</th>
+                        </tr>
+                        </thead>
+                        <tbody *ngFor="let n of dataArray;let i = index">
+                        <tr>
+                            <td data-title="ID">{{n.id}}</td>
+                            <td data-title="Fecha">{{n.studyDate |date:"dd-MM-yyyy"}}</td>
+                            <td data-title="Estudio">{{n.studieType.name}}</td>
+                            <td data-title="Precio">$ {{n.currentPrice}}</td>
+                            <td data-title="Paciente">{{n.idPatients.lastname}}, {{n.idPatients.name}}</td>
+                            <td data-title="OS">{{n.idHealthInsurance.name}}</td>
+                        </tr>
+                        </tbody>
+                        </table> 
+
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

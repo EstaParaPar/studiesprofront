@@ -8,6 +8,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { CommonModule} from '@angular/common';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NewPayoutComponent } from './newpayout/newPayout.component';
+import { ConfirmedPayoutListComponent } from './Confirmedpayout/confirmedPayoutList.component';
+import { DetailPayoutComponent } from './detailPayout/detailPayout.component';
 
 
 @NgModule({
@@ -22,8 +24,9 @@ import { NewPayoutComponent } from './newpayout/newPayout.component';
     ButtonsModule.forRoot()
   ],
   declarations: [
-    NewPayoutComponent
-
+    NewPayoutComponent,
+    ConfirmedPayoutListComponent,
+    DetailPayoutComponent
   ]
 })
 export class PayoutModule { }
