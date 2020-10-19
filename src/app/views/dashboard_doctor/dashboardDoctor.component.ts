@@ -47,7 +47,7 @@ export class DashboardDoctorComponent implements OnInit {
     liststudies() {
         this.router.navigate(['']);
     } listliquidaciones() {
-        this.router.navigate(['']);
+        this.router.navigate(['/payout/confirmedPayout']);
     }
 
 }
