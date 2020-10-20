@@ -14,6 +14,7 @@ import { CommonModule} from '@angular/common';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { EditStudyComponent } from './editstudy/editStudy.component';
 import { AllStudiesPayoutComponent } from './listStudiesDoctor/payout/allStudiesPayout.component';
+import { StudiesPendingPayoutComponent } from './listStudiesDoctor/pendingPayout/StudiesPendingPayout.component';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { AllStudiesPayoutComponent } from './listStudiesDoctor/payout/allStudies
       AllStudiesTechComponent,
       PendingStudiesTechComponent,
       EditStudyComponent,
-      AllStudiesPayoutComponent
+      AllStudiesPayoutComponent,
+      StudiesPendingPayoutComponent
   ]
 })
 export class StudiesModule { }

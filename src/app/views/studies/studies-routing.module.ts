@@ -6,6 +6,7 @@ import {  AllStudiesTechComponent } from './listStudiesTech/allStudies/allStudie
 import {  PendingStudiesTechComponent } from './listStudiesTech/pendingStudies/pendingStudiesTech.component';
 import { EditStudyComponent } from './editstudy/editStudy.component';
 import { AllStudiesPayoutComponent }  from './listStudiesDoctor/payout/allStudiesPayout.component'
+import { StudiesPendingPayoutComponent } from './listStudiesDoctor/pendingPayout/StudiesPendingPayout.component';
 
 
 const routes: Routes = [
@@ -55,8 +56,14 @@ const routes: Routes = [
         component: PendingStudiesTechComponent,
         data: {
           title: 'studiespending'
-        }
-
+          }
+      },
+      {
+        path: 'studiespendingpayout',
+        component: StudiesPendingPayoutComponent,
+        data: {
+          title: 'studiespendingpayout'
+          }
       }
     ]
   }

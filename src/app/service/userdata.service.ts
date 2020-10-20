@@ -4,8 +4,6 @@ import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { TokenStorageService } from '../service/token-storage.service';
 import { AuthInterceptor } from '../helpers/auth.interceptor';
-
-
 import { environment } from '@env/environment';
 
 const AUTH_API = environment.API_URL;

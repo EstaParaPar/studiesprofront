@@ -36,7 +36,7 @@ export class DetailPayoutComponent implements OnInit {
 
         this.currentUser = this.tokenStorageService.getUser();
 
-        this.studiesService.getDetailPayout(this.route.snapshot.paramMap.get('id')).subscribe((data: []) => {
+        this.studiesService.getDetailPayout(this.route.snapshot.paramMap.get('id')).subscribe((data: any[]) => {
             console.log(data);
             console.log("creando detalle");
             let allData = data;

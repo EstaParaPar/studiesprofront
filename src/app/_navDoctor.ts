@@ -25,7 +25,17 @@ export const navItemsDoctor: INavData[] = [
                 url: '/payout/confirmedPayout',
                 icon: 'icon-docs'
             },
+            {
+                name: 'Estudios pendientes de liquidación',
+                url: '/studies/studiespendingpayout',
+                icon: 'icon-clock'
+            },
         ]
+    },
+    {
+        name: 'Registrar Usuario',
+        url: '/register',
+        icon: 'icon-user'
     },
     {
         title: true,
