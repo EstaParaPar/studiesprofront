@@ -20,7 +20,6 @@ import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { LogoutComponent } from './views/login/logout.component';
-import { RegisterComponent } from './views/register/register.component';
 
 
 import { FormsModule } from '@angular/forms';
@@ -84,7 +83,6 @@ import { PatientsService } from '@service/patients.service';
     P500Component,
     LoginComponent,
       LogoutComponent,
-    RegisterComponent,
     HomeComponent
   ],
   providers: [

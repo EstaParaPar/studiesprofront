@@ -10,9 +10,9 @@ export const navItemsDoctor: INavData[] = [
         title: true,
         name: 'Liquidaciones',
     },
-    { 
-        name:'Liquidaciones',
-        url:'/payout',
+    {
+        name: 'Liquidaciones',
+        url: '/payout',
         icon: 'icon-equalizer',
         children: [
             {
@@ -24,18 +24,17 @@ export const navItemsDoctor: INavData[] = [
                 name: 'liquidados',
                 url: '/payout/confirmedPayout',
                 icon: 'icon-docs'
-            },
-            {
-                name: 'Estudios pendientes de liquidación',
-                url: '/studies/studiespendingpayout',
-                icon: 'icon-clock'
-            },
+            }
         ]
     },
     {
-        name: 'Registrar Usuario',
-        url: '/register',
-        icon: 'icon-user'
+        title: true,
+        name: 'Estudios',
+    },
+    {
+        name: 'Estudios pendientes',
+        url: '/studies/studiespendingpayout',
+        icon: 'icon-clock'
     },
     {
         title: true,
@@ -65,6 +64,11 @@ export const navItemsDoctor: INavData[] = [
                 name: 'Usuarios',
                 url: '/setup/users',
                 icon: 'icon-people'
+            },
+            {
+                name: 'Registrar Usuario',
+                url: '/setup/newuser',
+                icon: 'icon-user'
             }
         ]
     }

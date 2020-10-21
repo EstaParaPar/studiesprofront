@@ -1,8 +1,8 @@
-import {Component, OnInit,TemplateRef} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TokenStorageService} from '../../../service/token-storage.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import { StudiesService } from '../../../service/studies.service';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal'
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 
 @Component({
@@ -11,7 +11,8 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal'
 export class DetailPayoutComponent implements OnInit {
     currentPayout;
     currentUser;
-    dataArray= [];
+    dataArray;
+    allData;
     modalRef: BsModalRef;
 
     constructor(
@@ -38,10 +39,10 @@ export class DetailPayoutComponent implements OnInit {
 
         this.studiesService.getDetailPayout(this.route.snapshot.paramMap.get('id')).subscribe((data: any[]) => {
             console.log(data);
-            console.log("creando detalle");
-            let allData = data;
-            this.dataArray = allData.studies;
-            this.currentPayout = allData.payout;
+
+            this.allData = data;
+            this.dataArray = this.allData.studies;
+            this.currentPayout = this.allData.payout;
             });
         }
     }

@@ -5,11 +5,14 @@ import { NgModule } from '@angular/core';
 import {MachinesComponent} from './machines/machines.component';
 import { StudiestypeComponent } from './studiestype/studiestype.component';
 import { UsersComponent } from './users/users.component';
+import { NewuserComponent } from './newuser/newuser.component';
 
 import { SetupRoutingModule } from './setup-routing.module';
 import {EditstudiestypeComponent} from './studiestype/editstudiestype.component';
 import {HealthInsuranceComponent} from './healthinsurance/healthinsurance.component';
 import {NewHealthInsuranceComponent} from './healthinsurance/newhealthinsurance.component';
+import {NgSelectModule} from '@ng-select/ng-select';
+
 
 
 @NgModule({
@@ -17,11 +20,12 @@ import {NewHealthInsuranceComponent} from './healthinsurance/newhealthinsurance.
     CommonModule,
     FormsModule,
     SetupRoutingModule,
-
+    NgSelectModule,
 
   ],
   declarations: [
       UsersComponent,
+      NewuserComponent,
       MachinesComponent,
       StudiestypeComponent,
       EditstudiestypeComponent,

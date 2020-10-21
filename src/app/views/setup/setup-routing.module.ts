@@ -7,6 +7,7 @@ import { UsersComponent } from './users/users.component';
 import {EditstudiestypeComponent} from './studiestype/editstudiestype.component';
 import {HealthInsuranceComponent} from './healthinsurance/healthinsurance.component';
 import {NewHealthInsuranceComponent} from './healthinsurance/newhealthinsurance.component';
+import { NewuserComponent } from './newuser/newuser.component';
 
 const routes: Routes = [
   {
@@ -32,7 +33,8 @@ const routes: Routes = [
         data: {
           title: 'studies'
         }
-      },{
+      },
+        {
         path: 'healthins',
         component: HealthInsuranceComponent,
         data: {
@@ -58,6 +60,13 @@ const routes: Routes = [
         component: UsersComponent,
         data: {
           title: 'users'
+        }
+      },
+      {
+        path: 'newuser',
+        component: NewuserComponent,
+        data: {
+          title: 'newusers'
         }
       }
     ]

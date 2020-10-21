@@ -1,0 +1,94 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="card mx-4">
+        <div class="card-body p-4">
+          <form
+                  *ngIf="!isSuccessful"
+                  name="form"
+                  (ngSubmit)="f.form.valid && onSubmit()"
+                  #f="ngForm"
+                  novalidate>
+
+
+            <h2>Registrar Usuario</h2>
+            <p class="text-muted">Crear Nuevo Usuario</p>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">@</span>
+              </div>
+              <input type="text" class="form-control" placeholder="Mail"
+                     [(ngModel)]="form.username"
+                     name="username"
+                     minlength="3"
+                     maxlength="20"
+                     #username="ngModel"
+                     required>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="icon-user"></i></span>
+              </div>
+              <input type="text" class="form-control" placeholder="Nombre" autocomplete="Nombre" required
+                     [(ngModel)]="form.name"
+                     name="name"
+                     minlength="3"
+                     maxlength="20"
+                     #username="ngModel"
+                     required>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="icon-user"></i></span>
+              </div>
+              <input type="text" class="form-control" placeholder="Apellido" autocomplete="Apellido" required
+                     [(ngModel)]="form.lastname"
+                     name="lastname"
+                     minlength="3"
+                     maxlength="20"
+                     #username="ngModel"
+                     required>
+            </div>
+
+            <div class="col-12 mb-3" style="
+             padding-left: 0px !important;     padding-right: 0px !important;">
+              <div id="selectRole2" class="row" style=" display: contents">
+                <ng-select id="selectRole" [items]="roles"
+                           [searchable]="true"
+                           [clearable]="true"
+                           bindLabel="name"
+                           bindValue="id"
+                           (change)="onChangeRole($event)"
+                           placeholder="Rol"
+                >
+                  <ng-template ng-label-tmp let-item="item">
+                    {{item}}
+                  </ng-template>
+                  <ng-template ng-option-tmp let-item="item" let-index="index">
+                    {{item}}
+                  </ng-template>
+
+                </ng-select>
+              </div>
+            </div>
+
+
+            <div class="form-group ">
+              <button class="btn btn-block btn-success">Registrar Usuario</button>
+            </div>
+            <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+              Registro Fallido!<br />{{ errorMessage }}
+            </div>
+          </form>
+        </div>
+        <div class="card-footer p-4">
+          <div class="row">
+            <div class="alert alert-success" *ngIf="isSuccessful">
+              Your registration is successful!
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
