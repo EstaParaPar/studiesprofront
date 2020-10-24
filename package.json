@@ -1,6 +1,6 @@
 {
   "name": "studiesprofront",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Studies Pro",
   "author": {
     "name": "Esta Para par"
@@ -11,8 +11,10 @@
   "scripts": {
     "ng": "ng",
     "postinstall": "ngcc --properties es2015 browser module main --first-only",
-    "start": "ng serve --host=0.0.0.0",
-    "build": "ng build --prod --aot --buildOptimizer --commonChunk --vendorChunk --optimization --progress",
+    "start": "node server.js",
+   // "start": "ng serve --host=0.0.0.0",
+    "build": "ng build",
+   // "build": "ng build --prod --aot --buildOptimizer --commonChunk --vendorChunk --optimization --progress",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
