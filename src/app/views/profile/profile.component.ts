@@ -23,5 +23,9 @@ export class ProfileComponent implements OnInit {
 
     this.currentUser = this.tokenStorageService.getUser();
   }
+  changePassword() {
+    this.router.navigate(['/setup/changepassword']);
+
+  }
 
 }

@@ -3,11 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 // Import Containers
 import { DefaultLayoutComponent } from './containers';
+import { ChangePasswordTopComponent } from './views/changepasswordtop/changepassword.component';
 
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { LogoutComponent } from './views/login/logout.component';
+
 
 
 
@@ -26,6 +28,13 @@ export const routes: Routes = [
     path: 'dash_tecnico',
     redirectTo: 'dashboardUser',
     pathMatch: 'full',
+  },
+  {
+    path: 'changepassword',
+    component: ChangePasswordTopComponent,
+    data: {
+      title: 'changepassword'
+    }
   },
   {
     path: '',

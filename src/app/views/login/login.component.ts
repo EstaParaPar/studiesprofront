@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
 import { TokenStorageService } from '../../service/token-storage.service';
 
@@ -14,24 +15,24 @@ export class LoginComponent implements OnInit {
   isForgotPass = false;
   errorMessage = '';
   roles: '';
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
-
+  changePass = false;
+  
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService,private router: Router) { }
+  currentUser = this.tokenStorage.getUser();
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().role;
-    
-      this.reloadPage(); //molestaba cuando logeabas y no dejaba cargar
-      
-      
-    }
+      this.reloadPage(); 
+    } 
     
   }
 
   onSubmit(): void {
     this.authService.login(this.form).subscribe(
+      
       data => {
-
+        this.changePass = data.changePassword;
         this.tokenStorage.saveToken(data.token);
         this.tokenStorage.saveUser(data);
 
@@ -39,8 +40,11 @@ export class LoginComponent implements OnInit {
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().role;
 
-      //  this.log(data);
-        this.reloadPage();
+        if (this.changePass) {
+          this.router.navigate(['/changepassword']);
+        } else {
+          this.reloadPage();
+        }
       },
       err => {
         this.errorMessage = err.error.message;

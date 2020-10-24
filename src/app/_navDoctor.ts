@@ -69,7 +69,7 @@ export const navItemsDoctor: INavData[] = [
                 name: 'Registrar Usuario',
                 url: '/setup/newuser',
                 icon: 'icon-user'
-            }
+            },
         ]
     }
 ];

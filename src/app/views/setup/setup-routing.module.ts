@@ -8,6 +8,7 @@ import {EditstudiestypeComponent} from './studiestype/editstudiestype.component'
 import {HealthInsuranceComponent} from './healthinsurance/healthinsurance.component';
 import {NewHealthInsuranceComponent} from './healthinsurance/newhealthinsurance.component';
 import { NewuserComponent } from './newuser/newuser.component';
+import { ChangePasswordComponent } from './changePassword/changepass.component';
 
 const routes: Routes = [
   {
@@ -68,6 +69,13 @@ const routes: Routes = [
         data: {
           title: 'newusers'
         }
+      },
+        {
+          path: 'changepassword',
+          component: ChangePasswordComponent,
+          data: {
+            title: 'changepassword'
+          }
       }
     ]
   }

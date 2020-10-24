@@ -12,6 +12,7 @@ import {EditstudiestypeComponent} from './studiestype/editstudiestype.component'
 import {HealthInsuranceComponent} from './healthinsurance/healthinsurance.component';
 import {NewHealthInsuranceComponent} from './healthinsurance/newhealthinsurance.component';
 import {NgSelectModule} from '@ng-select/ng-select';
+import { ChangePasswordComponent } from './changePassword/changepass.component';
 
 
 
@@ -30,7 +31,8 @@ import {NgSelectModule} from '@ng-select/ng-select';
       StudiestypeComponent,
       EditstudiestypeComponent,
       HealthInsuranceComponent,
-      NewHealthInsuranceComponent
+      NewHealthInsuranceComponent,
+      ChangePasswordComponent
   ]
 })
 export class SetupModule { }

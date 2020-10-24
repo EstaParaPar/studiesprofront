@@ -3,7 +3,8 @@ import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 import { Router } from '@angular/router';
 import { TokenStorageService } from '../../service/token-storage.service';
-import {StudiesService} from '../../service/studies.service';
+import { StudiesService } from '../../service/studies.service';
+
 
 @Component({
     templateUrl: 'dashboardDoctor.component.html'
@@ -14,7 +15,8 @@ export class DashboardDoctorComponent implements OnInit {
     constructor(
         private router: Router,
         private tokenStorageService: TokenStorageService,
-        private studiesService: StudiesService) { }
+        private studiesService: StudiesService
+        ) { }
 
 
     totalStudies = 0;

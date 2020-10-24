@@ -54,6 +54,7 @@ import { MachinesService } from './service/machines.service';
 import { HomeComponent } from './views/home/home.component';
 import { HealthInsuranceService } from '@service/healthinsurance.service';
 import { PatientsService } from '@service/patients.service';
+import { ChangePasswordTopComponent } from './views/changepasswordtop/changepassword.component';
 
 
 
@@ -77,6 +78,7 @@ import { PatientsService } from '@service/patients.service';
     ChartsModule
   ],
   declarations: [
+    ChangePasswordTopComponent,
     AppComponent,
     ...APP_CONTAINERS,
     P404Component,
