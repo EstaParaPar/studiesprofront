@@ -10,9 +10,9 @@ import { Router } from '@angular/router';
   templateUrl: './default-layout.component.html'
 })
 export class DefaultLayoutComponent {
-  private name: string;
-  private lastname: string;
-  private roles: string;
+  public name: string;
+  public lastname: string;
+  public roles: string;
   public sidebarMinimized = false;
   public navInUse = null;
   isLoggedIn = false;
