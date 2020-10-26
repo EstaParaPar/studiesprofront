@@ -21,7 +21,7 @@ export const navItemsDoctor: INavData[] = [
                 icon: 'icon-credit-card'
             },
             {
-                name: 'liquidados',
+                name: 'Finalizadas',
                 url: '/payout/confirmedPayout',
                 icon: 'icon-docs'
             }

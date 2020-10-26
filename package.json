@@ -5,10 +5,12 @@
   "author": {
     "name": "Esta Para par"
   },
+
   "scripts": {
     "ng": "ng",
     "postinstall": "ngcc --properties es2015 browser module main --first-only",
     "start": "node server.js",
+    "start2": "ng serve --host=0.0.0.0",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -34,7 +36,6 @@
     "bootstrap": "^4.5.0",
     "chart.js": "^2.9.3",
     "core-js": "^3.6.5",
-    "express": "^4.17.1",
     "flag-icon-css": "^3.5.0",
     "font-awesome": "^4.7.0",
     "module-alias": "^2.2.2",

@@ -6,7 +6,8 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 
 @Component({
-    templateUrl: 'detailPayout.component.html'
+    templateUrl: 'detailPayout.component.html',
+    styleUrls: ['detailPayout.component.css']
 })
 export class DetailPayoutComponent implements OnInit {
     currentPayout;
