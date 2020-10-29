@@ -4,9 +4,9 @@
 
 export const environment = {
     production: false,
-    API_URL: 'http://localhost:3000'
+    //API_URL: 'http://localhost:3000'
     //API_URL: 'http://192.168.200.24:3000'
-    //API_URL: 'https://studiesproback.herokuapp.com'
+    API_URL: 'https://studiesproback.herokuapp.com'
 };
 
 /*
