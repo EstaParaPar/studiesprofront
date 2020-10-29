@@ -20,6 +20,7 @@ export class NewStudyComponent implements OnInit {
     machineArray = [];
     selectedMachineId: number;
     dataHealthIn = [];
+    nameHealthIn = [];
     doctorArray = [];
     selectedDoctorId: number;
     estudiosArray = [];
@@ -69,6 +70,7 @@ export class NewStudyComponent implements OnInit {
             this.router.navigate(['']);
         } else {
             this.init();
+            console.log(this.dataHealthIn);
         }
     }
 
@@ -83,8 +85,9 @@ export class NewStudyComponent implements OnInit {
             //  this.userList = data;
         });
         this.healthInsuranceService.getHealthInsurance().subscribe((data: any[]) => {
-            // console.log(data);
             this.dataHealthIn = data;
+            
+            this.setnameHealthIn();
         });
         this.patientsService.getPatients().subscribe((data: any[]) => {
             // console.log(data);
@@ -102,7 +105,12 @@ export class NewStudyComponent implements OnInit {
         });
     }
 
-
+    setnameHealthIn(): void {
+        var listAux = this.dataHealthIn;
+        for (var i = 0; i < listAux.length; i++){
+            this.nameHealthIn.push(listAux[i].name.toLowerCase());
+        }
+    }
     saveNewStudy(): void {
         this.validateform();
         if (this.validform) {
@@ -173,10 +181,12 @@ export class NewStudyComponent implements OnInit {
     }
     addHealth() {
         this.newHealthIns = true;
+        console.log(this.newHealthIns);
     }
 
     findHealth() {
         this.newHealthIns = false;
+        console.log(this.newHealthIns);
     }
 
 
@@ -243,10 +253,8 @@ export class NewStudyComponent implements OnInit {
 
 
     validateform() {
+        this.messageFormValid = 'completar todos los campos';
         let valid = true;
-        if (this.selectedHealth == null) {
-            valid = false;
-        }
         if (this.selectedMachineId == null) {
             valid = false;
         }
@@ -265,7 +273,6 @@ export class NewStudyComponent implements OnInit {
             }
             if (this.studies.plastname == null || this.studies.plastname === '') {
                 valid = false;
-
             }
 
             if (this.studies.pdni == null || this.studies.pdni.toString().length < 8) {
@@ -279,13 +286,21 @@ export class NewStudyComponent implements OnInit {
 
         if (this.newHealthIns) {
             if (this.health.name == null || this.health.name === '') {
-            valid = false;
-        } else {
+                valid = false;
+            } else {
+                
+                var index = this.nameHealthIn.indexOf(this.health.name.toLowerCase());
+                if (index >= 0) {
+                    valid = false;
+                    this.messageFormValid = 'La obra social ya existe';
+                }
+
+            }
+        }else {
             if (this.selectedHealth == null) {
                 valid = false;
             }
-        }
-
+    
         }
 
         this.validform = valid;

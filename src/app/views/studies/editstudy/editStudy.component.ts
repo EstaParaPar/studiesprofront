@@ -17,7 +17,7 @@ import { StudiesService } from '../../../service/studies.service';
 })
 export class EditStudyComponent implements OnInit {
 
-
+    nameHealthIn = [];
     machineArray = [];
     selectedMachineId: number;
     dataHealthIn = [];
@@ -73,7 +73,9 @@ export class EditStudyComponent implements OnInit {
             this.router.navigate(['']);
         } else {
             this.init();
+
         }
+
     }
 
 
@@ -90,7 +92,9 @@ export class EditStudyComponent implements OnInit {
         });
         this.healthInsuranceService.getHealthInsurance().subscribe((data: any[]) => {
             // console.log(data);
+
             this.dataHealthIn = data;
+            this.setnameHealthIn();
         });
         this.patientsService.getPatients().subscribe((data: any[]) => {
             // console.log(data);
@@ -107,14 +111,13 @@ export class EditStudyComponent implements OnInit {
             this.estudiosArray = estudios;
         });
     }
-    /*"id": 32, "state": 4, "currentPrice": 0, "studyDate": "2020-10-06T00:00:00.000Z", "createAT": "2020-10-10T13:34:13.840Z", "uptadeAT": "2020-10-10T19:57:40.000Z",
-    "doctor": { "name": "doc", "lastname": "tor" },
-    "technician": { "name": "tec", "lastname": "nico" },
-    "studieType": { "id": 2, "name": "EEG CON ESTIMULACION COMPLEJA\t" },
-    "machine": { "name": "PC DRA REITERI" },
-    "idHealthInsurance": { "name": "galeno" },
-    "idPatients": { "name": "borja", "lastname": "valero", "dni": 25652369 }*/
 
+    setnameHealthIn(): void {
+        var listAux = this.dataHealthIn;
+        for (var i = 0; i < listAux.length; i++){
+            this.nameHealthIn.push(listAux[i].name.toLowerCase());
+        }
+    }
     getDate(date): string {
         return date.substring(0, 10);
 
@@ -287,10 +290,8 @@ export class EditStudyComponent implements OnInit {
 
 
     validateform() {
+        this.messageFormValid = 'completar todos los campos';
         let valid = true;
-        if (this.selectedHealth == null) {
-            valid = false;
-        }
         if (this.selectedMachineId == null) {
             valid = false;
         }
@@ -309,7 +310,6 @@ export class EditStudyComponent implements OnInit {
             }
             if (this.studies.plastname == null || this.studies.plastname === '') {
                 valid = false;
-
             }
 
             if (this.studies.pdni == null || this.studies.pdni.toString().length < 8) {
@@ -323,13 +323,21 @@ export class EditStudyComponent implements OnInit {
 
         if (this.newHealthIns) {
             if (this.health.name == null || this.health.name === '') {
-            valid = false;
-        } else {
+                valid = false;
+            } else {
+                
+                var index = this.nameHealthIn.indexOf(this.health.name.toLowerCase());
+                if (index >= 0) {
+                    valid = false;
+                    this.messageFormValid = 'La obra social ya existe';
+                }
+
+            }
+        }else {
             if (this.selectedHealth == null) {
                 valid = false;
             }
-        }
-
+    
         }
 
         this.validform = valid;
