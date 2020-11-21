@@ -14,7 +14,6 @@
               <th>#</th>
               <th>Fecha</th>
               <th>Estudio</th>
-              <th>Precio</th>
               <th>Doctor</th>
               <th>Estado</th>
               <th></th>
@@ -25,7 +24,6 @@
               <td data-title="ID">{{n.id}}</td>
               <td data-title="Fecha">{{n.studyDate| date :'short'}}</td>
               <td data-title="Estudio">{{n.studieType.name}}</td>
-              <td data-title="Precio">$ {{n.currentPrice}}</td>
               <td data-title="Doctor">{{n.doctor.lastname}}, {{n.doctor.name}}</td>
               <td data-title="Estado">
                 <span *ngIf="n.state==1" class="badge badge-warning">Pendiente</span>
