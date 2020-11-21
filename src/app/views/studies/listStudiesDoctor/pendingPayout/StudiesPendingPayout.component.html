@@ -10,7 +10,6 @@
                   data-mobile-responsive="true">
             <thead>
             <tr>
-              <th>#</th>
               <th>Fecha</th>
               <th>Estudio</th>
               <th>Tecnico</th>
@@ -20,15 +19,14 @@
             </thead>
             <tbody >
             <tr *ngFor="let n of dataArray;let i = index; let odd = odd" [ngClass]="odd ? 'odd_col' : 'even_col'">
-              <td data-title="ID">{{n.id}}</td>
-              <td data-title="Fecha">{{n.payout|date:"dd-MM-yyyy"}}</td>
+              <td data-title="Fecha">{{n.studyDate|date:"dd-MM-yyyy"}}</td>
               <td data-title="Estudio">{{n.studieType.name}}</td>
               <td data-title="Tecnico">{{n.technician.lastname}}, {{n.technician.name}}</td>
               <td data-title="Precio">$ {{n.currentPrice}}</td> 
               <td data-title="Estado"><input type="checkbox" [(ngModel)]="dataArray[i].checked" value="{{n.id}}" name="{{n.id}}" (change)="getSelectedStudie($event,n.id)"></td>
             </tr>
             <tr>
-              <td></td>
+
               <td></td>
               <td></td>
               <td><b>Monto total</b></td>

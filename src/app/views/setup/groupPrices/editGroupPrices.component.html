@@ -1,0 +1,34 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Listado de Grupos de Precios
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Estudio </th>
+                <th>Precios Total</th>
+                <th>Comision</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let n of dataArray;let i = index">
+              <tr>
+                <td>{{n.studyTypeId.name}}</td>
+                <td>{{n.totalPrice}}</td>
+                <td>{{n.techPrice}}</td>
+
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>

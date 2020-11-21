@@ -33,13 +33,14 @@ export class StudiesPendingPayoutComponent  implements OnInit {
         }
     }
     init() {
-        console.log  ("init de Pendingstudies");
+        console.log('init de Pendingstudies');
         this.currentUser = this.tokenStorageService.getUser();
         this.studiesService.getStudiesDoctor(this.currentUser.userId).subscribe((data: any[]) => {
-        console.log("creando listado");
-            this.dataArray = data;
-            this.allSelectedData = new Array<string>();
-            this.techid();
+                console.log('creando listado');
+                console.log(data)
+                this.dataArray = data;
+                this.allSelectedData = new Array<string>();
+                this.techid();
       });
       
   }
@@ -75,10 +76,11 @@ export class StudiesPendingPayoutComponent  implements OnInit {
         this.suma();
 
     }
-    selectAll(){
+    selectAll() {
+
         this.allSelectedData= [];
         
-        for (var x = 0;x < this.dataArray.length;  x++){
+        for (var x = 0;x < this.dataArray.length;  x++) {
                 let datavalue = this.dataArray[x];
                 console.log(datavalue);
                 this.allSelectedData.push(datavalue.id); 
@@ -117,7 +119,7 @@ export class StudiesPendingPayoutComponent  implements OnInit {
             payoutTechId: this.techId,
             studyId: Array.from(this.allSelectedData),
         }
-        console.log("entro a la llamada");
+        console.log('entro a la llamada');
         console.log(payoutData)
         this.studiesService.confirmStudiesPayout(payoutData)
         .subscribe(
