@@ -7,10 +7,10 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class EditPricesComponent implements OnInit {
 
-  dataArray = [];
+  dataArray: any[];
+
   constructor(private groupPrices: GroupPricesService,
-              private route: ActivatedRoute)
-  {}
+              private route: ActivatedRoute) {}
 
     ngOnInit() {
       const idGRP = this.route.snapshot.paramMap.get('id')
@@ -18,5 +18,8 @@ export class EditPricesComponent implements OnInit {
        // console.log(data);
         this.dataArray = data;
       });
+    }
+    savePrices(){
+      console.log(this.dataArray);
     }
 }

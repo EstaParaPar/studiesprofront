@@ -17,13 +17,31 @@
             <tbody *ngFor="let n of dataArray;let i = index">
               <tr>
                 <td>{{n.studyTypeId.name}}</td>
-                <td>{{n.totalPrice}}</td>
-                <td>{{n.techPrice}}</td>
-
+                <td> <input type='number' [(ngModel)]="n.totalPrice"/></td>
+                <td> <input type='number' [(ngModel)]="n.techPrice"/></td>
 
               </tr>
             </tbody>
           </table>
+          <div class="row">
+            <div class="col-6">
+
+              <button type="button" class="btn btn-block btn-light active "    (click)="volver()" >
+                Volver
+              </button>
+
+            </div>
+            <div class="col-6 text-right">
+              <div class="form-group">
+                <button class="btn btn-primary btn-block"
+                        type="submit"
+
+                        (click)="savePrices()">
+                  Guardar
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
