@@ -51,6 +51,7 @@ import { ChartsModule } from 'ng2-charts';
 import { HttpClientModule } from '@angular/common/http';
 import { StudiestypeService } from './service/studiestype.service';
 import { MachinesService } from './service/machines.service';
+import { GroupPricesService } from './service/groupPrices.service';
 import { HomeComponent } from './views/home/home.component';
 import { HealthInsuranceService } from '@service/healthinsurance.service';
 import { PatientsService } from '@service/patients.service';
@@ -91,6 +92,7 @@ import { ChangePasswordTopComponent } from './views/changepasswordtop/changepass
     authInterceptorProviders,
     StudiestypeService,
     MachinesService,
+    GroupPricesService,
     HealthInsuranceService,
     PatientsService,
     {

@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import {AuthService} from '../../../service/auth.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class NewuserComponent  implements OnInit {
     errorMessage = '';
     selectedRole = '';
 
-    constructor(private authService: AuthService) {
+    constructor(private authService: AuthService,
+    private router: Router) {
     }
 
     ngOnInit(): void {
@@ -32,7 +34,7 @@ export class NewuserComponent  implements OnInit {
     onSubmit(): void {
         let userData;
 
-
+        this.isSignUpFailed = false;
         userData = {
             role: this.selectedRole,
             password: this.form.name + '1234',
@@ -46,6 +48,7 @@ export class NewuserComponent  implements OnInit {
                 console.log(data);
                 this.isSuccessful = true;
                 this.isSignUpFailed = false;
+                this.router.navigate(['/setup/users']);
             },
             err => {
                 this.errorMessage = err.error.message;

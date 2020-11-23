@@ -76,18 +76,12 @@
             <div class="form-group ">
               <button class="btn btn-block btn-success">Registrar Usuario</button>
             </div>
-            <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+            <div class="alert alert-warning" *ngIf="isSignUpFailed">
               Registro Fallido!<br />{{ errorMessage }}
             </div>
           </form>
         </div>
-        <div class="card-footer p-4">
-          <div class="row">
-            <div class="alert alert-success" *ngIf="isSuccessful">
-              Your registration is successful!
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
   </div>

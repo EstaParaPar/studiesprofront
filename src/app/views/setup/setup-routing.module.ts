@@ -9,6 +9,10 @@ import {HealthInsuranceComponent} from './healthinsurance/healthinsurance.compon
 import {NewHealthInsuranceComponent} from './healthinsurance/newhealthinsurance.component';
 import { NewuserComponent } from './newuser/newuser.component';
 import { ChangePasswordComponent } from './changePassword/changepass.component';
+import { GroupPricesComponent } from './groupPrices/groupPrices.component';
+import {EditPricesComponent} from './groupPrices/editPrices.component';
+import {NewgrouppriceComponent} from './groupPrices/newgroupprice.component';
+
 
 const routes: Routes = [
   {
@@ -26,6 +30,27 @@ const routes: Routes = [
         component: MachinesComponent,
         data: {
           title: 'machines'
+        }
+      },
+        {
+        path: 'groupPrice',
+        component: GroupPricesComponent,
+        data: {
+          title: 'groupPrice'
+        }
+      },
+        {
+        path: 'newgroupprice',
+        component: NewgrouppriceComponent,
+        data: {
+          title: 'newgroupPrice'
+        }
+      },
+        {
+        path: 'editgroupPrice/:id',
+        component: EditPricesComponent,
+        data: {
+          title: 'editgroupPrice'
         }
       },
       {

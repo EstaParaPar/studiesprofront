@@ -51,6 +51,11 @@ export const navItemsDoctor: INavData[] = [
                 icon: 'icon-screen-desktop'
             },
             {
+                name: 'Precios',
+                url: '/setup/groupPrice',
+                icon: 'icon-docs'
+            },
+            {
                 name: 'Estudios',
                 url: '/setup/studies',
                 icon: 'icon-docs'
