@@ -27,4 +27,8 @@ export class GroupPricesService {
   create(data): Observable<any> {
         return this.http.post(`${this.apiUrl}` , data);
   }
+  update(id, data): Observable<any> {
+      const apiUrlaux: string = AUTH_API + '/priceGroupPrice/' + id;
+      return this.http.patch(`${apiUrlaux}`, data);
+  }
 }
