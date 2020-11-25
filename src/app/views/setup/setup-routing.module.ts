@@ -11,7 +11,9 @@ import { NewuserComponent } from './newuser/newuser.component';
 import { ChangePasswordComponent } from './changePassword/changepass.component';
 import { GroupPricesComponent } from './groupPrices/groupPrices.component';
 import {EditPricesComponent} from './groupPrices/editPrices.component';
-import {NewgrouppriceComponent} from './groupPrices/newgroupprice.component';
+import { NewgrouppriceComponent } from './groupPrices/newgroupprice.component';
+import { NewStudieTypeComponent } from './studiestype/newstudietype.component';
+
 
 
 const routes: Routes = [
@@ -58,6 +60,13 @@ const routes: Routes = [
         component: StudiestypeComponent,
         data: {
           title: 'studies'
+        }
+      },
+      {
+        path: 'newstudietype',
+        component: NewStudieTypeComponent,
+        data: {
+          title: 'newstudietype'
         }
       },
         {

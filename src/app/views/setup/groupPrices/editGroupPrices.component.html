@@ -1,12 +1,13 @@
 <div class="animated fadeIn">
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-10">
       <div class="card">
         <div class="card-header">
           <i class="fa fa-align-justify"></i> Listado de Grupos de Precios
         </div>
         <div class="card-body">
-          <table class="table table-striped">
+          <table id="no-more-tables" class="table table-striped" data-show-columns="true"
+          data-mobile-responsive="true">
             <thead>
               <tr>
                 <th>Estudio </th>
@@ -16,7 +17,7 @@
             </thead>
             <tbody *ngFor="let n of dataArray;let i = index">
               <tr>
-                <td>{{n.studyTypeId.name}}</td>
+                <td>{{n.studyType.name}}</td>
                 <td> <input type='number' [(ngModel)]="n.totalPrice"/></td>
                 <td> <input type='number' [(ngModel)]="n.techPrice"/></td>
 

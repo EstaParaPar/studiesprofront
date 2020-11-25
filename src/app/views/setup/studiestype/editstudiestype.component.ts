@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { StudiestypeService } from './../../../service/studiestype.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import {GroupPricesService} from './../../../service/groupPrices.service';
 
 
 @Component({
@@ -8,48 +9,54 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 
 export class EditstudiestypeComponent  implements OnInit {
-    dataArray = [];
-     id: string ;
+    dataArray: any[];
+    studyData: any[];
+    id: string;
+    studytype: string;
+    currentStudytype: string;
 
-    currentStudytype = null;
     message = '';
 
     constructor(
+        private groupPrices: GroupPricesService,
         private studiesTypeService: StudiestypeService,
         private route: ActivatedRoute,
         private router: Router) { }
 
     ngOnInit(): void {
         this.message = '';
-        this.getStudyType(this.route.snapshot.paramMap.get('id'));
+        this.id = this.route.snapshot.paramMap.get('id');
+        this.groupPrices.getGroupPricesByStudie(this.id).subscribe((data: any[]) => {
+
+            //console.log(data);
+            this.dataArray = data;
+        });
+        this.getStudieType();
     }
 
-    getStudyType(id): void {
-        this.studiesTypeService.getStudyType(id)
-            .subscribe(
-                data => {
-                    this.currentStudytype = data;
-                    console.log(data);
-                },
-                error => {
-                    console.log(error);
-                });
+    getStudieType(): void {
+        this.id = this.route.snapshot.paramMap.get('id');
+        this.studiesTypeService.getStudyType(this.id).subscribe((data: any[]) => {
+
+            console.log(data);
+            this.studyData = data;
+        });
+    
     }
 
 
 
     updateStudyType(): void {
-        this.studiesTypeService.update(this.currentStudytype.id, this.currentStudytype)
+        this.groupPrices.update(this.id, this.dataArray)
             .subscribe(
                 response => {
                     console.log(response);
-                    this.message = 'El Estudio Fue Actualizado Correctamente ';
+                    this.router.navigate(['setup/studies']);
                 },
                 error => {
                     console.log(error);
                 });
     }
-
 
 
     volver(): void {
@@ -65,30 +72,3 @@ export class EditstudiestypeComponent  implements OnInit {
 
 
 
-
-
-  //---------
-
-
-
-  /*
-
-  constructor(
-      private activatedRoute: ActivatedRoute,
-      private studiesTypeService: StudiestypeService
-      ) {}
-
-    ngOnInit() {
-       console.log('entro');
-       this.id = this.activatedRoute.snapshot.params.id;
-
-       this.studiesTypeService.getStudyType(this.id).subscribe((data: any[]) => {
-        console.log(data);
-        this.dataArray = data;
-      });
-    }
-
-
-
-
-}*/

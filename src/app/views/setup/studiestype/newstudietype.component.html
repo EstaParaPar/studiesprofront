@@ -1,0 +1,49 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Nuevo tipo de estudio</strong>
+        </div>
+        <div class="card-body">
+          <form>
+              <div class="form-group submit-form">
+                <label for="title">Nombre</label>
+                <input
+                        type="text"
+                        class="form-control"
+                        id="title"
+                        [(ngModel)]="studiesType.name"
+                        name="title"
+                />
+              </div>
+
+            </form>
+
+            <div class="row">
+              <div class="col-6">
+
+                <button type="button" class="btn btn-light active" (click)="volver()" >
+                  Volver
+                </button>
+
+              </div>
+              <div class="col-6 text-right">
+                <div class="form-group">
+
+                  <div >
+                    <button (click)="saveStudiestype()" class="btn btn-success">Guardar</button>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!--/.row-->
+
+      </div>
+    </div>
+</div>
+
+

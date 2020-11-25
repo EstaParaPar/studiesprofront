@@ -4,6 +4,10 @@
       <div class="card">
         <div class="card-header">
           <i class="fa fa-align-justify"></i> Listado de Estudios
+          <button id="no-label" class="btn btn-primary float-right" type="button" [routerLink]="['/setup/newstudietype']">
+            <a>Nuevo &nbsp;</a>
+            <i class="fa fa-pencil-square-o fa-lg"></i>
+          </button>
         </div>
         <div class="card-body">
           <table  id="no-more-tables" class="table table-striped" data-show-columns="true"
@@ -11,7 +15,6 @@
 
             <thead>
             <tr>
-              <th>#</th>
               <th>Nombre del Estudio</th>
               <th>Precio</th>
               <th></th>
@@ -19,9 +22,7 @@
             </thead>
             <tbody *ngFor="let n of dataArray;let i = index">
             <tr>
-              <td data-title="ID">{{n.id}}</td>
               <td data-title="Nombre">{{n.name}}</td>
-              <td data-title="Precio">{{n.price}}</td>
               <td data-title="Operaciones"> <i class="fa fa-pencil-square-o fa-lg" [routerLink]="['/setup/editstudy/', n.id]"></i> </td>
             </tr>
             </tbody>
@@ -33,5 +34,3 @@
   </div>
 
 
-
-</div>

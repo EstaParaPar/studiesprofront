@@ -24,6 +24,10 @@ export class GroupPricesService {
     const apiUrlaux: string = AUTH_API + '/priceGroupPrice/' + idGRP;
     return this.http.get(`${apiUrlaux}`);
   }
+  getGroupPricesByStudie(id) {
+    const apiUrlaux: string = AUTH_API + '/priceGroupStudies/' + id;
+    return this.http.get(`${apiUrlaux}`);
+  }
   create(data): Observable<any> {
         return this.http.post(`${this.apiUrl}` , data);
   }

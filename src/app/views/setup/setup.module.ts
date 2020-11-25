@@ -16,6 +16,7 @@ import {NgSelectModule} from '@ng-select/ng-select';
 import { ChangePasswordComponent } from './changePassword/changepass.component';
 import {EditPricesComponent} from './groupPrices/editPrices.component';
 import {NewgrouppriceComponent} from './groupPrices/newgroupprice.component';
+import { NewStudieTypeComponent } from './studiestype/newstudietype.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import {NewgrouppriceComponent} from './groupPrices/newgroupprice.component';
       MachinesComponent,
       GroupPricesComponent,
       NewgrouppriceComponent,
+      NewStudieTypeComponent,
       EditPricesComponent,
       StudiestypeComponent,
       EditstudiestypeComponent,

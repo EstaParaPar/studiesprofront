@@ -21,6 +21,10 @@ export class StudiestypeService {
   getStudiesType() {
     return this.http.get(`${this.apiUrl}`);
   }
+  //create
+  create(data): Observable<any> {
+    return this.http.post(`${this.apiUrl}` , data);
+}
 
   getStudyType(idStudy) {
 
