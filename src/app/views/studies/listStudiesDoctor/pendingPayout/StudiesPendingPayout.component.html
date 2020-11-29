@@ -14,15 +14,17 @@
               <th>Estudio</th>
               <th>Tecnico</th>
               <th>Precio</th>
+              <th>Precio Tecnico</th>
               <th><input type="checkbox" [checked]="isAllCheckBoxChecked()" (change)="checkAllCheckBox($event)"></th>
             </tr>
             </thead>
             <tbody >
             <tr *ngFor="let n of dataArray;let i = index; let odd = odd" [ngClass]="odd ? 'odd_col' : 'even_col'">
-              <td data-title="Fecha">{{n.studyDate|date:"dd-MM-yyyy"}}</td>
+              <td data-title="Fecha">{{n.studyDate | date:"dd-MM-yyyy"}}</td>
               <td data-title="Estudio">{{n.studieType.name}}</td>
               <td data-title="Tecnico">{{n.technician.lastname}}, {{n.technician.name}}</td>
               <td data-title="Precio">$ {{n.currentPrice}}</td> 
+              <td data-title="Precio Tecnico">$ {{n.techCurrentPrice}}</td>
               <td data-title="Estado"><input type="checkbox" [(ngModel)]="dataArray[i].checked" value="{{n.id}}" name="{{n.id}}" (change)="getSelectedStudie($event,n.id)"></td>
             </tr>
             <tr>
@@ -30,6 +32,7 @@
               <td></td>
               <td></td>
               <td><b>Monto total</b></td>
+              <td><b></b></td>
               <td><b>${{totalPrice}}</b></td>
               <td></td>
             </tr>

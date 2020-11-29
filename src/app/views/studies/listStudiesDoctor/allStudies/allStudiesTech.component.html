@@ -23,7 +23,7 @@
             <tbody *ngFor="let n of dataArray;let i = index">
             <tr>
               <td data-title="ID">{{n.id}}</td>
-              <td data-title="Fecha">{{n.id}}</td>
+              <td data-title="Fecha">{{n.studyDate | date:"dd-MM-yyyy"}}</td>
               <td data-title="Estudio">{{n.studieType.name}}</td>
               <td data-title="Precio">{{n.currentPrice}}</td>
               <td data-title="Doctor">{{n.doctor.lastname}}, {{n.doctor.name}}</td>
