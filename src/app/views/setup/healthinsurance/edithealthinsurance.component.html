@@ -1,0 +1,71 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Nueva Prepaga - Obra Social</strong>
+        </div>
+        <div class="card-body">
+          <form>
+              <div class="form-group submit-form">
+                <label for="title">Nombre</label>
+                <input
+                        type="text"
+                        class="form-control"
+                        id="title"
+                        [(ngModel)]="healthinsurance.name"
+                        data-placeholder="{{dataArray.name}}"
+                        name="title"
+                />
+              </div>
+
+            <div class="form-group row">
+              <label class="col-md-12 col-form-label"><b>Grupo Precios</b></label>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-12">
+                <div class="row" style=" display: contents">
+                  <ng-select [items]="gpArray"
+                             bindLabel="name"
+                             bindValue="id"
+                             (change)="onChangeGP($event)"
+                             placeholder="Seleccionar Grupo De Precios"
+                             (clear)="onRemoveGP()"
+                  >
+                  </ng-select>
+                </div>
+              </div>
+            </div>
+
+            </form>
+
+            <div class="row">
+              <div class="col-6">
+
+                <button type="button" class="btn btn-light active" (click)="volver()" >
+                  Volver
+                </button>
+
+              </div>
+              <div class="col-6 text-right">
+                <div class="form-group">
+
+                  <div >
+                    <button (click)="saveHealthinsurance()" class="btn btn-success">Guardar</button>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          <div class="card-footer">
+            <div class="row" *ngIf="!validform">
+              <div class="alert-danger" >{{messageFormValid}}</div>
+            </div>
+          </div>
+          </div>
+        </div><!--/.row-->
+
+      </div>
+    </div>
+</div>

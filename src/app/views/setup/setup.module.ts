@@ -17,6 +17,7 @@ import { ChangePasswordComponent } from './changePassword/changepass.component';
 import {EditPricesComponent} from './groupPrices/editPrices.component';
 import {NewgrouppriceComponent} from './groupPrices/newgroupprice.component';
 import { NewStudieTypeComponent } from './studiestype/newstudietype.component';
+import { EditHealthinsuranceComponent } from './healthinsurance/edithealthinsurance.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { NewStudieTypeComponent } from './studiestype/newstudietype.component';
       EditstudiestypeComponent,
       HealthInsuranceComponent,
       NewHealthInsuranceComponent,
-      ChangePasswordComponent
+      ChangePasswordComponent,
+      EditHealthinsuranceComponent
   ]
 })
 export class SetupModule { }

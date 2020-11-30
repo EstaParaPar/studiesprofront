@@ -24,7 +24,9 @@
                 <td>{{n.id}}</td>
                 <td>{{n.name}}</td>
                 <td>{{n.groupPrice.name}}</td>
-                <td> </td>
+                <td><button id="no-label" class="btn btn-primary float-right" type="button" [routerLink]="['/setup/edithealthins', n.id]">
+                  <a>Editar &nbsp;</a><i class="fa fa-pencil-square-o fa-lg"></i>
+                </button> </td>
               </tr>
             </tbody>
           </table>

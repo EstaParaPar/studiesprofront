@@ -22,4 +22,14 @@ export class HealthInsuranceService {
   create(data): Observable<any> {
         return this.http.post(`${this.apiUrl}` , data);
   }
+
+  getHealthinsById(id) {
+    const apiUrlaux: string = AUTH_API + '/healthInsurance/' + id;
+    return this.http.get(`${apiUrlaux}`);
+  }
+
+  update(id, data): Observable<any> {
+    const apiUrlaux: string = AUTH_API + '/healthInsurance/' + id;
+    return this.http.patch(`${apiUrlaux}`, data);
+}
 }

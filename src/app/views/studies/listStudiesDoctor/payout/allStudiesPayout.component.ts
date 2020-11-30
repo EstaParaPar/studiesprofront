@@ -14,6 +14,7 @@ export class AllStudiesPayoutComponent  implements OnInit {
         techId: any;
         allSelectedData: string[];
         totalPrice: number;
+        totalTechPrice: number;
 
 
     constructor(
@@ -92,13 +93,17 @@ export class AllStudiesPayoutComponent  implements OnInit {
     
     suma(){
         let suma = 0;
+        let suma2 = 0;
         for (var x = 0;x < this.dataArray.length;  x++){
                 let datavalue = this.dataArray[x];
                 if (this.allSelectedData.includes(datavalue.id )){
-                    suma= suma + datavalue.currentPrice;
+                    suma = suma + datavalue.currentPrice;
+                    suma2= suma2 + datavalue.techCurrentPrice;
             }
         }
+
         this.totalPrice = suma
+        this.totalTechPrice = suma2
 
     }
     

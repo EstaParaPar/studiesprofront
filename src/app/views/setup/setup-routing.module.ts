@@ -13,6 +13,7 @@ import { GroupPricesComponent } from './groupPrices/groupPrices.component';
 import {EditPricesComponent} from './groupPrices/editPrices.component';
 import { NewgrouppriceComponent } from './groupPrices/newgroupprice.component';
 import { NewStudieTypeComponent } from './studiestype/newstudietype.component';
+import { EditHealthinsuranceComponent } from './healthinsurance/edithealthinsurance.component';
 
 
 
@@ -81,6 +82,13 @@ const routes: Routes = [
         component: NewHealthInsuranceComponent,
         data: {
           title: 'newhealth'
+        }
+      },
+      {
+        path: 'edithealthins/:id',
+        component: EditHealthinsuranceComponent,
+        data: {
+          title: 'edithealth'
         }
       },
         {

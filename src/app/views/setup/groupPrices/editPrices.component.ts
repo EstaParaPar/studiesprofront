@@ -3,7 +3,8 @@ import {GroupPricesService} from './../../../service/groupPrices.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-  templateUrl: 'editGroupPrices.component.html'
+  templateUrl: 'editGroupPrices.component.html',
+  styleUrls: ['editPrices.component.css']
 })
 export class EditPricesComponent implements OnInit {
 

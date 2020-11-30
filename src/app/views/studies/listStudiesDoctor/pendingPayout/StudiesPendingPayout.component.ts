@@ -12,8 +12,9 @@ export class StudiesPendingPayoutComponent  implements OnInit {
         currentUser: any;
         modalRef: BsModalRef;
         allSelectedData: string[];
-    totalPrice: number;
-    techId: number;
+        totalPrice: number;
+        techId: number;
+        totalTechPrice: number;
 
 
     constructor(
@@ -90,14 +91,16 @@ export class StudiesPendingPayoutComponent  implements OnInit {
     
     suma(){
         let suma = 0;
+        let suma2 = 0;
         for (var x = 0;x < this.dataArray.length;  x++){
                 let datavalue = this.dataArray[x];
                 if (this.allSelectedData.includes(datavalue.id )){
-                    suma= suma + datavalue.currentPrice;
+                    suma = suma + datavalue.currentPrice;
+                    suma2= suma2 + datavalue.techCurrentPrice;
             }
         }
         this.totalPrice = suma
-
+        this.totalTechPrice = suma2
     }
     techid() {
         let techId;
