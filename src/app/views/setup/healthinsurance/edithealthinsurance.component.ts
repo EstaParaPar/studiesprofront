@@ -7,7 +7,7 @@ import { GroupPricesService } from '../../../service/groupPrices.service';
   templateUrl: 'edithealthinsurance.component.html'
 })
 export class EditHealthinsuranceComponent implements OnInit {
-  dataArray: any[];
+  dataArray;
   id: string;
   gpArray = [];
   selectedGPId: number;
@@ -26,9 +26,11 @@ export class EditHealthinsuranceComponent implements OnInit {
 
     ngOnInit() {
       this.id = this.route.snapshot.paramMap.get('id');
-      this.healthInsService.getHealthinsById(this.id).subscribe((data: any[]) => {
-        // console.log(data);
-        this.dataArray = data;
+      this.healthInsService.getHealthinsById(this.id).subscribe((data: any) => {
+        console.log(data);
+        this.healthinsurance.name = data.name;
+        this.selectedGPId = data.groupPrice.id;
+        console.log(this.selectedGPId);
       });
       this.getGroupPrices()
     }

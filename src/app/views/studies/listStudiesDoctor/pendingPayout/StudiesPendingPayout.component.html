@@ -6,6 +6,7 @@
           <i class="fa fa-align-justify"></i> Listado de Estudios Realizados
         </div>
         <div *ngIf="dataArray.length > 0 else elseBlock" class="card-body">
+          
           <table  id="no-more-tables" class="table table-striped" data-show-columns="true"
                   data-mobile-responsive="true">
             <thead>
@@ -31,7 +32,7 @@
 
               <td></td>
               <td></td>
-              <td><b>Monto total</b></td>
+              <td><b>Totales</b></td>
               <td><b>${{totalPrice}}</b></td>
               <td><b>${{totalTechPrice}}</b></td>
               <td></td>
