@@ -15,6 +15,7 @@ export class AllStudiesPayoutComponent  implements OnInit {
         allSelectedData: string[];
         totalPrice: number;
         totalTechPrice: number;
+        techname;
 
 
     constructor(
@@ -34,9 +35,8 @@ export class AllStudiesPayoutComponent  implements OnInit {
         }
     }
     init() {
-        console.log  ("tamo en el init de allstudiespayout");
         this.techId = this.route.snapshot.paramMap.get('id');
-        console.log(this.techId)
+        console.log(this.techId);
         this.currentUser = this.tokenStorageService.getUser();
         let datavalues = {
             idTech: this.techId
@@ -45,6 +45,7 @@ export class AllStudiesPayoutComponent  implements OnInit {
         console.log(data);
         console.log("creando listado");
         this.dataArray = data;
+        this.techname = this.dataArray[0].technician.name + ' ' + this.dataArray[0].technician.lastname;
         this.allSelectedData = new Array<string>();
       });
       

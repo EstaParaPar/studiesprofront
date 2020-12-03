@@ -42,7 +42,7 @@ export class DetailPayoutComponent implements OnInit {
             console.log(data);
 
             this.allData = data;
-            this.dataArray = this.allData.studies;
+            this.dataArray = this.allData.detailPayOut;
             this.currentPayout = this.allData.payout;
             });
         }

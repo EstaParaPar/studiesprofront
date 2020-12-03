@@ -9,7 +9,7 @@
                     <form>
                         <div class="row">
 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group row">
                                     <label class="col-md-12 col-form-label">
                                         <b>Doctor</b>
@@ -18,10 +18,12 @@
                                 <div class="form-group row">
                                     <div class="col-md-12">
                                         <p class="form-control-static">
-                                            {{currentUser.username}}
+                                            {{currentUser.name}} {{currentUser.lastname}}
                                         </p>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group row">
                                     <label class="col-md-12 col-form-label" >
                                         <b>Tecnico</b>
@@ -29,9 +31,12 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-md-12">
-                                       {{currentPayout.technician.name}}, {{currentPayout.technician.lastname}}
+                                        {{currentPayout.technician.name}} {{currentPayout.technician.lastname}}
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
+
                                 <div class="form-group row">
                                     <label class="col-md-12 col-form-label" >
                                         <b>Total liquidación</b>
@@ -45,27 +50,52 @@
                             </div>
                         </div>
                     </form>
-                    <table  id="no-more-tables" class="table table-striped" data-show-columns="true"
+                    <table  id="no-more-tables" class="table " data-show-columns="true"
                     data-mobile-responsive="true">
                         <thead>
                         <tr>
-                            <th>#</th>
+                            <th></th>
                             <th>Fecha</th>
                             <th>Estudio</th>
-                            <th>Precio</th>
                             <th>Paciente</th>
-                            <th>OS</th>
+                            <th>Precio</th>
+                            <th>Precio Tecnico</th>
+
+
                         </tr>
                         </thead>
                         <tbody *ngFor="let n of dataArray;let i = index">
-                        <tr>
-                            <td data-title="ID">{{n.id}}</td>
+
+                        <tr *ngIf="n.studies.length > 0"
+                        style="background-color: #73818f85;">
+
+                            <td data-title="Obra Social">{{n.obraSocial.name}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>$ {{n.precio_os}}</td>
+                            <td>$ {{n.precio_tech}}</td>
+                        </tr>
+                            <tr *ngFor="let m of n.studies;">
+
+                                <td></td>
+                                <td data-title="Fecha">{{m.studyDate |date:"dd-MM-yyyy"}}</td>
+                                <td data-title="Estudio">{{m.studieType.name}}</td>
+
+                                <td data-title="Paciente">{{m.idPatients.lastname}}, {{m.idPatients.name}}</td>
+                                <td data-title="Precio">$ {{m.currentPrice}}</td>
+                                <td data-title="Precio Tecnico">$ {{m.techCurrentPrice}}</td>
+
+
+                            </tr>
+                       <!-- <tr>
+
                             <td data-title="Fecha">{{n.studyDate |date:"dd-MM-yyyy"}}</td>
                             <td data-title="Estudio">{{n.studieType.name}}</td>
                             <td data-title="Precio">$ {{n.currentPrice}}</td>
                             <td data-title="Paciente">{{n.idPatients.lastname}}, {{n.idPatients.name}}</td>
                             <td data-title="OS">{{n.idHealthInsurance.name}}</td>
-                        </tr>
+                        </tr>-->
                         </tbody>
                         </table> 
 
