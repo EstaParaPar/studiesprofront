@@ -28,6 +28,18 @@ export const navItemsUser: INavData[] = [
             url: '/studies/pendingstudiestech'
         }
     ]},
+    {
+        name: 'Liquidaciones',
+        url: '/payout',
+        icon: 'icon-equalizer',
+        children: [
+            {
+                name: 'Finalizadas',
+                url: '/payout/confirmedPayoutTech',
+                icon: 'icon-docs'
+            }
+        ]
+    },
 
 
 ];

@@ -55,16 +55,23 @@ export class StudiesService {
     const url = apiUrl + '/';
     return this.http.post(`${url}`, body);
   }
+
   getPayoutList(idDoctor): Observable<any> {
     const apiUrl = AUTH_API + '/confirmedStudiesPayout';
     const url = apiUrl + '/' + idDoctor ;
     return this.http.get(`${url}`);
   }
+  getPayoutListTech(idTech): Observable<any> {
+        const apiUrl = AUTH_API + '/confirmedStudiesPayoutTech';
+        const url = apiUrl + '/' + idTech ;
+        return this.http.get(`${url}`);
+    }
   getDetailPayout(idPayout): Observable<any> {
     const apiUrl = AUTH_API + '/detailPayout';
     const url = apiUrl + '/' + idPayout;
     return this.http.get(`${url}`);
   }
+
   getStudiesDoctor(idDoctor): Observable<any> {
     const apiUrl = AUTH_API + '/studiesdoctor';
     const url = apiUrl + '/' + idDoctor ;

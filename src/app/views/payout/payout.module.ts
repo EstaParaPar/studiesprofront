@@ -9,7 +9,9 @@ import { CommonModule} from '@angular/common';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NewPayoutComponent } from './newpayout/newPayout.component';
 import { ConfirmedPayoutListComponent } from './Confirmedpayout/confirmedPayoutList.component';
+import { ConfirmedPayoutListTechComponent } from './ConfirmedpayoutTech/confirmedPayoutListTech.component';
 import { DetailPayoutComponent } from './detailPayout/detailPayout.component';
+import { DetailPayoutTechComponent } from './detailPayoutTech/detailPayoutTech.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { DetailPayoutComponent } from './detailPayout/detailPayout.component';
   declarations: [
     NewPayoutComponent,
     ConfirmedPayoutListComponent,
-    DetailPayoutComponent
+    ConfirmedPayoutListTechComponent,
+    DetailPayoutComponent,
+    DetailPayoutTechComponent
   ]
 })
 export class PayoutModule { }
