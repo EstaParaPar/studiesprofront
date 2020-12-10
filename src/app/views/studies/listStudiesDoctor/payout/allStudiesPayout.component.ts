@@ -116,6 +116,7 @@ export class AllStudiesPayoutComponent  implements OnInit {
 
         payoutData = {
             payoutPrice : this.totalPrice,
+            payoutPriceTech : this.totalTechPrice,
             payoutDoctorId : this.currentUser.userId,
             payoutTechId: this.techId,
             studyId: Array.from(this.allSelectedData),

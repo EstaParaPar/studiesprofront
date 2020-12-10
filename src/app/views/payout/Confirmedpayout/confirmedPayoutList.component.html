@@ -24,7 +24,7 @@
               <td data-title="ID">{{n.id}}</td>
               <td data-title="Fecha">{{n.createAT| date :'short'}}</td>
               <td data-title="Tecnico">{{n.technician.name}}{{n.technician.lastname}}</td>
-              <td data-title="Precio">$ {{n.totalPrice}}</td>
+              <td data-title="Precio">$ {{n.totalPriceTech}}</td>
               <td data-title="Doctor">{{n.doctor.lastname}}, {{n.doctor.name}}</td>
               <td data-title="Operaciones">
                 <button type="reset" class="btn btn-sm btn-success btn-block" [routerLink]="['/payout/detailPayout/', n.id]">
