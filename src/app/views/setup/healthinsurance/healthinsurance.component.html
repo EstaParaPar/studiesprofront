@@ -13,7 +13,7 @@
           <table class="table table-striped">
             <thead>
               <tr>
-                <th>#</th>
+
                 <th>Nombre </th>
                 <th>Grupo Precios</th>
                 <th></th>
@@ -21,7 +21,6 @@
             </thead>
             <tbody *ngFor="let n of dataArray;let i = index">
               <tr>
-                <td>{{n.id}}</td>
                 <td>{{n.name}}</td>
                 <td>{{n.groupPrice.name}}</td>
                 <td><button id="no-label" class="btn btn-primary float-right" type="button" [routerLink]="['/setup/edithealthins', n.id]">

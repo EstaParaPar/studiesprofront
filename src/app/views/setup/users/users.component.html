@@ -13,7 +13,6 @@
           <table  id="no-more-tables"  class="table table-striped">
             <thead>
               <tr>
-                <th>#</th>
                 <th>Usuario</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
@@ -23,7 +22,6 @@
             </thead>
             <tbody *ngFor="let n of dataArray;let i = index">
               <tr>
-                <td data-title="ID">{{n.id}}</td>
                 <td data-title="Mail" >{{n.username}}</td>
                 <td data-title="Nombre">{{n.name}}</td>
                 <td data-title="Apellido">{{n.lastname}}</td>

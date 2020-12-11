@@ -13,14 +13,12 @@
           <table class="table table-striped">
             <thead>
               <tr>
-                <th>#</th>
                 <th>Grupo de Precios</th>
                 <th></th>
               </tr>
             </thead>
             <tbody *ngFor="let n of dataArray;let i = index">
               <tr>
-                <td>{{n.id}}</td>
                 <td>{{n.name}}</td>
                 <td data-title="Operaciones">
                   <button id="no-label" class="btn btn-primary float-right" type="button" [routerLink]="['/setup/editgroupPrice/', n.id]">
