@@ -1,5 +1,5 @@
-
-Installar 
+-- Front de app para registro de estudios médicos --
+Instalar 
 
   npm Install
 
