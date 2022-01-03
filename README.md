@@ -1,9 +1,29 @@
--- Front de app para registro de estudios médicos --
-Instalar 
+# Front de app para registro de estudios médicos
 
-  npm Install
+## Test Web 
+https://studiespro.herokuapp.com/
 
-Run DEV
+### Users Test
+### 1-  Doctor
+doctor@mail.com (doctor123)
 
-  ng serve --host=0.0.0.0
+### 2- Tecnico
+tecnico@mail.com (tecnico123)
+
+## Imagenes del sistema
+
+
+### Dashboard Doctor 
+![plot](./img/dashdoctor.png)
+### Dashboar Tecnico
+![plot](./img/dashtech.png)
+### Formulario Carga Nuevo Estudio
+![plot](./img/nuevoestudio.png)
+### Login 
+![plot](./img/login.png)
+
+## Instalacion  
+1- npm Install
+2- Run DEV
+3- ng serve --host=0.0.0.0
 
